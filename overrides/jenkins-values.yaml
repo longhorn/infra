@@ -1,0 +1,102 @@
+master:
+  serviceType: ClusterIP
+  installPlugins:
+  - pipeline-input-step:2.11
+  - snakeyaml-api:1.26.4
+  - pipeline-model-extensions:1.7.0
+  - plain-credentials:1.7
+  - apache-httpcomponents-client-4-api:4.5.10-2.0
+  - pipeline-rest-api:2.13
+  - pipeline-model-definition:1.7.0
+  - pipeline-stage-step:2.3
+  - command-launcher:1.4
+  - workflow-cps:2.80
+  - okhttp-api:3.14.9
+  - handlebars:1.1.1
+  - durable-task:1.34
+  - kubernetes-credentials:0.7.0
+  - momentjs:1.1.1
+  - jquery-detached:1.2.1
+  - github-api:1.114.3
+  - workflow-api:2.40
+  - matrix-auth:2.6.1
+  - git:4.3.0
+  - authorize-project:1.3.0
+  - github:1.30.0
+  - workflow-basic-steps:2.20
+  - workflow-support:3.5
+  - jackson2-api:2.11.0
+  - mailer:1.32
+  - pipeline-build-step:2.12
+  - git-client:3.3.0
+  - workflow-durable-task-step:2.35
+  - workflow-multibranch:2.21
+  - variant:1.3
+  - token-macro:2.12
+  - cloudbees-folder:6.14
+  - github-oauth:0.33
+  - jdk-tool:1.4
+  - display-url-api:2.3.2
+  - pipeline-graph-analysis:1.10
+  - credentials:2.3.10
+  - pipeline-stage-tags-metadata:1.7.0
+  - structs:1.20
+  - workflow-step-api:2.22
+  - github-branch-source:2.8.2
+  - configuration-as-code:1.41
+  - branch-api:2.5.6
+  - lockable-resources:2.8
+  - authentication-tokens:1.4
+  - workflow-cps-global-lib:2.16
+  - junit:1.29
+  - JiraTestResultReporter:2.0.7
+  - workflow-scm-step:2.11
+  - script-security:1.73
+  - matrix-project:1.16
+  - ssh-credentials:1.18.1
+  - bouncycastle-api:2.18
+  - ace-editor:1.1
+  - workflow-job:2.39
+  - workflow-aggregator:2.6
+  - trilead-api:1.0.8
+  - scm-api:2.6.3
+  - kubernetes-client-api:4.9.2-2
+  - pipeline-model-api:1.7.0
+  - kubernetes:1.26.2
+  - git-server:1.9
+  - pipeline-milestone-step:1.3.1
+  - jsch:0.1.55.2
+  - pipeline-stage-view:2.13
+  - credentials-binding:1.23
+  overwritePlugins: true
+  ingress:
+    enabled: true
+    apiVersion: "networking.k8s.io/v1beta1"
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      nginx.ingress.kubernetes.io/secure-backends: "true"
+    hostName: ci.longhorn.io
+    tls:
+    - secretName: jenkins-tls
+      hosts:
+      - ci.longhorn.io
+persistence:
+  enabled: true
+  existingClaim: jenkins
+agent:
+  image: "meldafrawi/jnlp-slave"
+  imageTag: "latest"
+  privileged: true
+  idleMinutes: 20
+  resources:
+    requests:
+      cpu: "600m"
+      memory: "1Gi"
+    limits:
+      cpu: "800m"
+      memory: "2Gi"
+  volumes:
+    - type: HostPath
+      hostPath: /var/run/docker.sock
+      mountPath: /var/run/docker.sock
