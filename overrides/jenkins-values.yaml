@@ -68,6 +68,7 @@ master:
   - jsch:0.1.55.2
   - pipeline-stage-view:2.13
   - credentials-binding:1.23
+  - kubernetes-credentials-provider:0.15
   overwritePlugins: true
   ingress:
     enabled: true
@@ -78,7 +79,7 @@ master:
       nginx.ingress.kubernetes.io/secure-backends: "true"
     hostName: ci.longhorn.io
     tls:
-    - secretName: jenkins-tls
+    - secretName: ci.longhorn.io
       hosts:
       - ci.longhorn.io
 persistence:
