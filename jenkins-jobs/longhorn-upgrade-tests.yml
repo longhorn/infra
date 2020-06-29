@@ -1,0 +1,28 @@
+- job:
+    name: longhorn-upgrade-tests
+    project-type: pipeline
+    parameters:
+      - string:
+          name: TF_VAR_tf_workspace
+          default: /src/longhorn-tests/test_framework
+      - bool:
+          name: LONGHORN_UPGRADE_TEST
+          default: true
+      - bool:
+          name: LONGHORN_INFRA_TEST
+          default: false
+      - string:
+          name: LONGHORN_TEST_CLOUDPROVIDER
+          default: "digitalocean"
+    pipeline-scm:
+      scm:
+        - git:
+            url: https://github.com/longhorn/longhorn-tests
+            branches:
+              - master
+      script-path: test_framework/Jenkinsfile
+      lightweight-checkout: true
+    triggers:
+      - timed: |-
+            TZ=America/Los_Angeles
+            H 01 * * *
