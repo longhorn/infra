@@ -1,0 +1,49 @@
+- job:
+    block-downstream: false
+    block-upstream: false
+    builders:
+    - shell: |-
+        cat <<EOT > jenkins_jobs.ini
+        [job_builder]
+        ignore_cache=True
+        keep_descriptions=False
+        include_path=.:scripts:~/git/
+        recursive=False
+        exclude=.*:manual:./development
+        allow_duplicates=False
+        update=all
+
+        [jenkins]
+        user=$JJB_USER
+        password=$JJB_PASSWORD
+        url=https://ci.longhorn.io
+        query_plugins_info=False
+        EOT
+
+        jenkins-jobs --conf ./jenkins_jobs.ini update ./jenkins-jobs/
+        rm -rf jenkins_jobs.ini
+    concurrent: false
+    disabled: false
+    name: Build Jenkins Jobs
+    project-type: freestyle
+    properties:
+    - build-discarder:
+        artifact-days-to-keep: -1
+        artifact-num-to-keep: 10
+        days-to-keep: -1
+        num-to-keep: 10
+    publishers: []
+    scm:
+    - git:
+        branches:
+        - '*/master'
+        url: https://github.com/longhorn/infra.git
+    triggers:
+    - github
+    wrappers:
+    - credentials-binding:
+      - username-password-separated:
+          credential-id: jjb-svc-user
+          password: JJB_PASSWORD
+          username: JJB_USER
+    - timestamps
