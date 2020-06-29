@@ -68,7 +68,6 @@ master:
   - jsch:0.1.55.2
   - pipeline-stage-view:2.13
   - credentials-binding:1.23
-  - kubernetes-credentials-provider:0.15
   overwritePlugins: true
   ingress:
     enabled: true
@@ -82,6 +81,34 @@ master:
     - secretName: ci.longhorn.io
       hosts:
       - ci.longhorn.io
+  secretsFilesSecret: "jenkins-secrets"
+  containerEnv:
+    - name: SECRETS
+      value: /var/jenkins_secrets
+  JCasC:
+    enabled: true
+    sidecars:
+      configAutoReload:
+        enabled: true
+    securityRealm: |-
+        github:
+          githubWebUri: "https://github.com"
+          githubApiUri: "https://api.github.com"
+          clientID: ${GITHUB_OAUTH_CLIENT_ID}
+          clientSecret: ${GITHUB_OAUTH_CLIENT_SECRET}
+          oauthScopes: "read:org,user:email"
+    authorizationStrategy: |-
+        projectMatrix:
+          permissions:
+            - "Overall/Administer:longhorn*infra"
+            - "Overall/Read:longhorn*qa"
+            - "Overall/Read:longhorn*dev"
+            - "Overall/Read:anonymous"
+            - "Job/Read:anonymous"
+            - "Job/Build:longhorn*qa"
+            - "Job/Build:longhorn*dev"
+            - "Job/Cancel:longhorn*qa"
+            - "Job/Build:longhorn*dev"
 persistence:
   enabled: true
   existingClaim: jenkins
