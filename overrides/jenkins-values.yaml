@@ -68,6 +68,7 @@ master:
   - jsch:0.1.55.2
   - pipeline-stage-view:2.13
   - credentials-binding:1.23
+  - slack:2.40
   overwritePlugins: true
   ingress:
     enabled: true
