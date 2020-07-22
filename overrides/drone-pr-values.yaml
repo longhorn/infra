@@ -6,7 +6,7 @@ extraSecretNamesForEnvFrom:
 env:
   DRONE_SERVER_HOST: drone-pr.longhorn.io
   DRONE_SERVER_PROTO: https
-  DRONE_ADMISSION_PLUGIN_ENDPOINT: http://drone-admit-member.drone.svc
+  DRONE_ADMISSION_PLUGIN_ENDPOINT: http://drone-pr-admit-member.drone.svc
 ingress:
     enabled: true
     annotations:
@@ -24,4 +24,4 @@ persistentVolume:
   enabled: true
   accessModes:
     - ReadWriteOnce
-  existingClaim: "done-pr"
+  existingClaim: "drone-pr"
