@@ -1,0 +1,7 @@
+- job:
+    name: public
+    project-type: folder
+
+- job:
+    name: private
+    project-type: folder
