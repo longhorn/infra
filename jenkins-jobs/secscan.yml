@@ -1,0 +1,17 @@
+- job:
+    name: image-security-scan
+    project-type: pipeline
+    folder: private
+    parameters:
+      - string:
+          name: TF_VAR_tf_workspace
+          default: /src/longhorn-tests/secscan
+    pipeline-scm:
+      scm:
+        - git:
+            url: https://github.com/longhorn/longhorn-tests
+            branches:
+              - master
+      script-path: secscan/Jenkinsfile
+      lightweight-checkout: true
+
