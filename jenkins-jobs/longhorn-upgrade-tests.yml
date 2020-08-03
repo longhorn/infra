@@ -1,6 +1,7 @@
 - job:
     name: longhorn-upgrade-tests
     project-type: pipeline
+    folder: public
     parameters:
       - string:
           name: TF_VAR_tf_workspace
