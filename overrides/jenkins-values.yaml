@@ -69,6 +69,7 @@ master:
   - pipeline-stage-view:2.13
   - credentials-binding:1.23
   - slack:2.40
+  - job-dsl:1.77
   overwritePlugins: true
   ingress:
     enabled: true
@@ -110,6 +111,27 @@ master:
             - "Job/Build:longhorn*dev"
             - "Job/Cancel:longhorn*qa"
             - "Job/Build:longhorn*dev"
+    configScripts:
+      jobs-config: |
+        jobs:
+          - script: >
+              folder('private') {
+                properties {
+                  authorizationMatrix {
+                    inheritanceStrategy {
+                        nonInheriting()
+                    }
+                    permissions([
+                        "Job/Read:longhorn*dev",
+                        'Job/Build:longhorn*dev',
+                        'Job/Cancel:longhorn*dev',
+                        'Job/Configure:longhorn*infra',
+                        "Job/Delete:longhorn*infra",
+                    ])
+                  }
+                }
+              }
+                
 persistence:
   enabled: true
   existingClaim: jenkins
