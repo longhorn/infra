@@ -70,6 +70,7 @@ master:
   - credentials-binding:1.23
   - slack:2.40
   - job-dsl:1.77
+  - extended-choice-parameter:0.78
   overwritePlugins: true
   ingress:
     enabled: true
