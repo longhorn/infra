@@ -6,6 +6,20 @@
       - string:
           name: TF_VAR_tf_workspace
           default: /src/longhorn-tests/secscan
+      - extended-choice:
+          name: TF_VAR_SEVERITY
+          type: checkbox
+          description: Severities of vulnerabilities to be displayed
+          default-value: HIGH,CRITICAL
+          visible-items: 5
+          value: !join:
+            - ','
+            - 
+                - UNKNOWN
+                - LOW
+                - MEDIUM
+                - HIGH
+                - CRITICAL
     pipeline-scm:
       scm:
         - git:
@@ -14,4 +28,7 @@
               - master
       script-path: secscan/Jenkinsfile
       lightweight-checkout: true
-
+    triggers:
+      - timed: |-
+            TZ=America/Los_Angeles
+            H 01 * * *
