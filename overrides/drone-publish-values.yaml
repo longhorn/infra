@@ -1,27 +1,28 @@
----                                                                             
-updateStrategy:                                                                 
-  type: Recreate                                                                
-extraSecretNamesForEnvFrom:                                                     
-  - drone-publish-secret                                                        
-env:                                                                            
-  DRONE_SERVER_HOST: drone-publish.longhorn.io                                  
-  DRONE_SERVER_PROTO: https                                                     
-  DRONE_ADMISSION_PLUGIN_ENDPOINT: http://drone-publish-admit-member.drone.svc          
-ingress:                                                                        
-    enabled: true                                                               
-    annotations:                                                                
-      kubernetes.io/ingress.class: nginx                                        
-      cert-manager.io/cluster-issuer: letsencrypt-prod                          
-    hosts:                                                                      
-      - host: drone-publish.longhorn.io                                         
-        paths:                                                                  
-          - "/"                                                                 
-    tls:                                                                        
-    - secretName: drone-publish.longhorn.io                                     
-      hosts:                                                                    
-      - drone-publish.longhorn.io                                               
-persistentVolume:                                                               
-  enabled: true                                                                 
-  accessModes:                                                                  
-    - ReadWriteOnce                                                             
+---
+updateStrategy:
+  type: Recreate
+extraSecretNamesForEnvFrom:
+  - drone-publish-secret
+env:
+  DRONE_SERVER_HOST: drone-publish.longhorn.io
+  DRONE_SERVER_PROTO: https
+  DRONE_ADMISSION_PLUGIN_ENDPOINT: http://drone-publish-admit-member.drone.svc
+ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      nginx.ingress.kubernetes.io/proxy-body-size: 5m
+    hosts:
+      - host: drone-publish.longhorn.io
+        paths:
+          - "/"
+    tls:
+    - secretName: drone-publish.longhorn.io
+      hosts:
+      - drone-publish.longhorn.io
+persistentVolume:
+  enabled: true
+  accessModes:
+    - ReadWriteOnce
   existingClaim: "drone-publish"
