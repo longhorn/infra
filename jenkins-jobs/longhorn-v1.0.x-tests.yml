@@ -1,0 +1,20 @@
+- job:
+    name: longhorn-tests-v1.0.x
+    project-type: pipeline
+    folder: public
+    parameters:
+      - string:
+          name: TF_VAR_tf_workspace
+          default: /src/longhorn-tests/test_framework
+    pipeline-scm:
+      scm:
+        - git:
+            url: https://github.com/longhorn/longhorn-tests
+            branches:
+              - v1.0.x
+      script-path: test_framework/Jenkinsfile
+      lightweight-checkout: true
+    triggers:
+      - timed: |-
+            TZ=America/Los_Angeles
+            H 01 * * *
