@@ -3,12 +3,21 @@
     project-type: pipeline
     folder: public
     parameters:
-      - string:                                                                 
-          name: LONGHORN_REPO_URL                                               
-          default: "https://github.com/longhorn/longhorn.git"                   
-      - string:                                                                 
-          name: LONGHORN_REPO_BRANCH                                            
-          default: "master" 
+      - string:
+          name: LONGHORN_REPO_URL
+          default: "https://github.com/longhorn/longhorn.git"
+      - string:
+          name: LONGHORN_REPO_BRANCH
+          default: "master"
+      - string:
+          name: CUSTOM_LONGHORN_MANAGER_IMAGE
+          default: "longhornio/longhorn-manager:master"
+      - string:
+          name: CUSTOM_LONGHORN_ENGINE_IMAGE
+          default: "longhornio/longhorn-engine:master"
+      - string:
+          name: CUSTOM_LONGHORN_INSTANCE_MANAGER_IMAGE
+          default: "longhornio/longhorn-instance-manager:master"
       - string:
           name: TF_VAR_tf_workspace
           default: /src/longhorn-tests/test_framework
