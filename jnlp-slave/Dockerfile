@@ -47,6 +47,6 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s
     chmod +x kubectl && \
     mv kubectl /usr/bin/kubectl
 
-RUN pip3 install jenkins-job-builder
+RUN pip3 install --no-cache-dir jenkins-job-builder
 
 USER jenkins
