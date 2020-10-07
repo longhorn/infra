@@ -5,7 +5,7 @@ ENV GIT_VERSION 2.27.0
 USER root
 
 RUN apt-get update && \
-    apt-get install -y \
+    apt-get --no-install-recommends install -y \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -36,7 +36,7 @@ RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
     $(lsb_release -cs) \
     stable" && \
     apt-get update && \
-    apt-get install -y \
+    apt-get --no-install-recommends install -y \
     docker-ce \
     docker-ce-cli \
     containerd.io && \
