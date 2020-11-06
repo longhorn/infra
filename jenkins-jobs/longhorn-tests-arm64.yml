@@ -1,5 +1,5 @@
 - job:
-    name: longhorn-tests-amd64
+    name: longhorn-tests-arm64
     project-type: pipeline
     folder: public
     parameters:
