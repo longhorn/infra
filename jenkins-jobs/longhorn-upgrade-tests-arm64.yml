@@ -1,5 +1,5 @@
 - job:
-    name: longhorn-tests
+    name: longhorn-upgrade-tests-arm64
     project-type: pipeline
     folder: public
     parameters:
@@ -23,22 +23,22 @@
           default: /src/longhorn-tests/test_framework
       - bool:
           name: LONGHORN_UPGRADE_TEST
-          default: false
+          default: true
       - bool:
           name: LONGHORN_INFRA_TEST
           default: false
-      - string:
-          name: LONGHORN_TEST_CLOUDPROVIDER
-          default: "aws"
-      - string:
-          name: ARCH
-          default: "amd64"
-      - string:
-          name: CONTROLPLANE_INSTANCE_TYPE
-          default: "t2.xlarge"
-      - string:
-          name: WORKER_INSTANCE_TYPE
-          default: "t2.xlarge"
+      - string:                                                                 
+          name: LONGHORN_TEST_CLOUDPROVIDER                                     
+          default: "aws"                                                        
+      - string:                                                                 
+          name: ARCH                                                            
+          default: "arm64"                                                      
+      - string:                                                                 
+          name: CONTROLPLANE_INSTANCE_TYPE                                      
+          default: "a1.xlarge"                                                  
+      - string:                                                                 
+          name: WORKER_INSTANCE_TYPE                                            
+          default: "a1.xlarge" 
     pipeline-scm:
       scm:
         - git:

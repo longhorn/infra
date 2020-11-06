@@ -1,5 +1,5 @@
 - job:
-    name: longhorn-tests
+    name: longhorn-tests-amd64
     project-type: pipeline
     folder: public
     parameters:
@@ -32,13 +32,13 @@
           default: "aws"
       - string:
           name: ARCH
-          default: "amd64"
+          default: "arm64"
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
-          default: "t2.xlarge"
+          default: "a1.xlarge"
       - string:
           name: WORKER_INSTANCE_TYPE
-          default: "t2.xlarge"
+          default: "a1.xlarge"
     pipeline-scm:
       scm:
         - git:
