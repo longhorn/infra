@@ -27,9 +27,18 @@
       - bool:
           name: LONGHORN_INFRA_TEST
           default: false
-      - string:
-          name: LONGHORN_TEST_CLOUDPROVIDER
-          default: "digitalocean"
+      - string:                                                                 
+          name: LONGHORN_TEST_CLOUDPROVIDER                                     
+          default: "aws"                                                        
+      - string:                                                                 
+          name: ARCH                                                            
+          default: "amd64"                                                      
+      - string:                                                                 
+          name: CONTROLPLANE_INSTANCE_TYPE                                      
+          default: "t2.xlarge"                                                  
+      - string:                                                                 
+          name: WORKER_INSTANCE_TYPE                                            
+          default: "t2.xlarge"   
     pipeline-scm:
       scm:
         - git:
