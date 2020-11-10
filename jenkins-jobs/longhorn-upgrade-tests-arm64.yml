@@ -1,6 +1,7 @@
 - job:
     name: longhorn-upgrade-tests-arm64
     project-type: pipeline
+    disabled: true
     folder: public
     parameters:
       - string:
@@ -50,4 +51,4 @@
     triggers:
       - timed: |-
             TZ=America/Los_Angeles
-            H 01 * * *
+            H 00 * * *
