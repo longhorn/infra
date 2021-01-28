@@ -1,5 +1,5 @@
 - job:
-    name: longhorn-tests-arm64
+    name: longhorn-tests-ubuntu-arm64
     project-type: pipeline
     folder: public
     parameters:
@@ -33,6 +33,12 @@
       - string:
           name: ARCH
           default: "arm64"
+      - string:
+          name: DISTRO
+          default: "ubuntu"
+      - string:
+          name: DISTRO_VERSION
+          default: "20.04"
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "a1.xlarge"

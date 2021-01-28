@@ -1,5 +1,5 @@
 - job:
-    name: longhorn-tests
+    name: longhorn-upgrade-tests-ubuntu-amd64
     project-type: pipeline
     folder: public
     parameters:
@@ -23,7 +23,7 @@
           default: /src/longhorn-tests/test_framework
       - bool:
           name: LONGHORN_UPGRADE_TEST
-          default: false
+          default: true
       - bool:
           name: LONGHORN_INFRA_TEST
           default: false
@@ -33,6 +33,12 @@
       - string:
           name: ARCH
           default: "amd64"
+      - string:
+          name: DISTRO
+          default: "ubuntu"
+      - string:
+          name: DISTRO_VERSION
+          default: "20.04"
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "t2.xlarge"
