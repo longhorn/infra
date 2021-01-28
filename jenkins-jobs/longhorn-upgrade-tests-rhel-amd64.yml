@@ -1,7 +1,6 @@
 - job:
-    name: longhorn-upgrade-tests-arm64
+    name: longhorn-upgrade-tests-rhel-amd64
     project-type: pipeline
-    disabled: true
     folder: public
     parameters:
       - string:
@@ -28,18 +27,24 @@
       - bool:
           name: LONGHORN_INFRA_TEST
           default: false
-      - string:                                                                 
-          name: LONGHORN_TEST_CLOUDPROVIDER                                     
-          default: "aws"                                                        
-      - string:                                                                 
-          name: ARCH                                                            
-          default: "arm64"                                                      
-      - string:                                                                 
-          name: CONTROLPLANE_INSTANCE_TYPE                                      
-          default: "a1.xlarge"                                                  
-      - string:                                                                 
-          name: WORKER_INSTANCE_TYPE                                            
-          default: "a1.xlarge" 
+      - string:
+          name: LONGHORN_TEST_CLOUDPROVIDER
+          default: "aws"
+      - string:
+          name: ARCH
+          default: "amd64"
+      - string:
+          name: DISTRO
+          default: "rhel"
+      - string:
+          name: DISTRO_VERSION
+          default: "8.3.0"
+      - string:
+          name: CONTROLPLANE_INSTANCE_TYPE
+          default: "t2.xlarge"
+      - string:
+          name: WORKER_INSTANCE_TYPE
+          default: "t2.xlarge"
     pipeline-scm:
       scm:
         - git:

@@ -1,0 +1,59 @@
+- job:
+    name: longhorn-tests-rhel-amd64
+    project-type: pipeline
+    folder: public
+    parameters:
+      - string:
+          name: LONGHORN_REPO_URL
+          default: "https://github.com/longhorn/longhorn.git"
+      - string:
+          name: LONGHORN_REPO_BRANCH
+          default: "master"
+      - string:
+          name: CUSTOM_LONGHORN_MANAGER_IMAGE
+          default: "longhornio/longhorn-manager:master"
+      - string:
+          name: CUSTOM_LONGHORN_ENGINE_IMAGE
+          default: "longhornio/longhorn-engine:master"
+      - string:
+          name: CUSTOM_LONGHORN_INSTANCE_MANAGER_IMAGE
+          default: "longhornio/longhorn-instance-manager:master"
+      - string:
+          name: TF_VAR_tf_workspace
+          default: /src/longhorn-tests/test_framework
+      - bool:
+          name: LONGHORN_UPGRADE_TEST
+          default: false
+      - bool:
+          name: LONGHORN_INFRA_TEST
+          default: false
+      - string:
+          name: LONGHORN_TEST_CLOUDPROVIDER
+          default: "aws"
+      - string:
+          name: ARCH
+          default: "amd64"
+      - string:
+          name: DISTRO
+          default: "rhel"
+      - string:
+          name: DISTRO_VERSION
+          default: "8.3.0"
+      - string:
+          name: CONTROLPLANE_INSTANCE_TYPE
+          default: "t2.xlarge"
+      - string:
+          name: WORKER_INSTANCE_TYPE
+          default: "t2.xlarge"
+    pipeline-scm:
+      scm:
+        - git:
+            url: https://github.com/longhorn/longhorn-tests
+            branches:
+              - master
+      script-path: test_framework/Jenkinsfile
+      lightweight-checkout: true
+    triggers:
+      - timed: |-
+            TZ=America/Los_Angeles
+            H 21 * * *
