@@ -31,6 +31,12 @@
           name: LONGHORN_TEST_CLOUDPROVIDER
           default: "aws"
       - string:
+          name: AWS_REGION
+          default: "us-east-2"
+      - string:
+          name: AWS_AVAILABILITY_ZONE
+          default: "us-east-2a"
+      - string:
           name: ARCH
           default: "arm64"
       - string:
@@ -53,7 +59,7 @@
               - master
       script-path: test_framework/Jenkinsfile
       lightweight-checkout: true
-    triggers:
-      - timed: |-
-            TZ=America/Los_Angeles
-            H 21 * * *
+      #triggers:
+      #  - timed: |-
+      #        TZ=America/Los_Angeles
+      #        H 21 * * *
