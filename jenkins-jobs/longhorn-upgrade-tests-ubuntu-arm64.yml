@@ -1,7 +1,6 @@
 - job:
     name: longhorn-upgrade-tests-ubuntu-arm64
     project-type: pipeline
-    disabled: true
     folder: public
     parameters:
       - string:
@@ -31,6 +30,12 @@
       - string:
           name: LONGHORN_TEST_CLOUDPROVIDER
           default: "aws"
+      - string:
+          name: AWS_REGION
+          default: "us-east-2"
+      - string:
+          name: AWS_AVAILABILITY_ZONE
+          default: "us-east-2a"
       - string:
           name: ARCH
           default: "arm64"
