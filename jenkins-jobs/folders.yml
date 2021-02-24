@@ -3,5 +3,41 @@
     project-type: folder
 
 - job:
+    name: public/ubuntu
+    project-type: folder
+
+- job:
+    name: public/ubuntu/amd64
+    project-type: folder
+
+- job:
+    name: public/ubuntu/arm64
+    project-type: folder
+
+- job:
+    name: public/rhel
+    project-type: folder
+
+- job:
+    name: public/rhel/amd64
+    project-type: folder
+
+- job:
+    name: public/rhel/arm64
+    project-type: folder
+
+- job:
+    name: public/sles
+    project-type: folder
+
+- job:
+    name: public/sles/amd64
+    project-type: folder
+
+- job:
+    name: public/sles/arm64
+    project-type: folder
+
+- job:
     name: private
     project-type: folder
