@@ -1,6 +1,7 @@
 - job:
     name: longhorn-tests-v1.0.x
     project-type: pipeline
+    disabled: true
     folder: public
     parameters:
       - string:
