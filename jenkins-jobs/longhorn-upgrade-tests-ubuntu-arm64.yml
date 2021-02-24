@@ -1,5 +1,5 @@
 - job:
-    name: longhorn-tests-ubuntu-arm64
+    name: longhorn-upgrade-tests-ubuntu-arm64
     project-type: pipeline
     folder: public/ubuntu/arm64
     parameters:
