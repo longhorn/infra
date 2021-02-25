@@ -4,6 +4,14 @@
     folder: public/sles/amd64
     parameters:
       - string:
+          name: NOTIFY_SLACK_CHANNEL
+          default: "C01PM0C376V"
+          description: "slack Channel ID to send job notification (default: T02RW4JDH)"
+      - bool:
+          name: SEND_SLACK_NOTIFICATION
+          default: true
+          description: "send slack notification? (default: true)"
+      - string:
           name: LONGHORN_MANAGER_REPO_URI
           default: "https://github.com/longhorn/longhorn-manager.git"
           description: "longhorn-manager repo URI"
