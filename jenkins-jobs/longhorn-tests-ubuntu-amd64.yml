@@ -60,12 +60,12 @@
           description: "cloudprovider used to run test suite, supported values:[aws]"
       - string:
           name: AWS_REGION
-          default: "us-east-2"
+          default: "us-east-1"
           description: "aws region (e.g us-east-1), effective only when using aws as cloudprovider"
       - string:
           name: AWS_AVAILABILITY_ZONE
-          default: "us-east-2a"
-          description: "aws availability zone (e.g us-east-1a), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
+          default: "us-east-1c"
+          description: "aws availability zone (e.g us-east-1c), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
       - string:
           name: ARCH
           default: "amd64"
