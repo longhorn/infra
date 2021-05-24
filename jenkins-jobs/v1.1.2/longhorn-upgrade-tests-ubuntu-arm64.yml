@@ -1,7 +1,7 @@
 - job:
     name: v1.1.2-longhorn-upgrade-tests-ubuntu-arm64
     project-type: pipeline
-    folder: public/v1.1.2/ubuntu/arm64
+    folder: public/v1.1.2
     parameters:
       - string:
           name: NOTIFY_SLACK_CHANNEL
