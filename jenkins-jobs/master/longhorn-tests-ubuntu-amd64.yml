@@ -1,8 +1,7 @@
 - job:
-    concurrent: true
-    name: longhorn-tests-regression
+    name: longhorn-tests-ubuntu-amd64
     project-type: pipeline
-    folder: private
+    folder: public/master/ubuntu/amd64
     parameters:
       - string:
           name: NOTIFY_SLACK_CHANNEL
@@ -66,7 +65,7 @@
       - string:
           name: AWS_AVAILABILITY_ZONE
           default: "us-east-1c"
-          description: "aws availability zone (e.g us-east-1), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
+          description: "aws availability zone (e.g us-east-1c), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
       - string:
           name: ARCH
           default: "amd64"
@@ -99,3 +98,7 @@
               - master
       script-path: test_framework/Jenkinsfile
       lightweight-checkout: true
+    triggers:
+      - timed: |-
+            TZ=America/Los_Angeles
+            H 21 * * *

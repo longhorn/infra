@@ -1,7 +1,7 @@
 - job:
-    name: longhorn-upgrade-tests-sles-arm64
+    name: v1.1.2-longhorn-tests-ubuntu-amd64
     project-type: pipeline
-    folder: public/sles/arm64
+    folder: public/v1.1.2/ubuntu/amd64
     parameters:
       - string:
           name: NOTIFY_SLACK_CHANNEL
@@ -17,27 +17,27 @@
           description: "longhorn-manager repo URI"
       - string:
           name: LONGHORN_MANAGER_BRANCH
-          default: "master"
+          default: "v1.1.2"
           description: "longhorn-manager repo branch"
       - string:
           name: CUSTOM_LONGHORN_MANAGER_IMAGE
-          default: "longhornio/longhorn-manager:master"
+          default: "longhornio/longhorn-manager:v1.1.2-head"
           description: "custom longhorn-manager image (e.g USER/longhorn-manager:testing)"
       - string:
           name: CUSTOM_LONGHORN_ENGINE_IMAGE
-          default: "longhornio/longhorn-engine:master"
+          default: "longhornio/longhorn-engine:v1.1.2-head"
           description: "custom longhorn-engine image (e.g USER/longhorn-engine:testing)"
       - string:
           name: CUSTOM_LONGHORN_INSTANCE_MANAGER_IMAGE
-          default: "longhornio/longhorn-instance-manager:master"
+          default: "longhornio/longhorn-instance-manager:master-head"
           description: "custom longhorn-instance-manager image (e.g USER/longhorn-instance-manager:testing)"
       - string:
           name: CUSTOM_LONGHORN_SHARE_MANAGER_IMAGE
-          default: "longhornio/longhorn-share-manager:master"
+          default: "longhornio/longhorn-share-manager:master-head"
           description: "custom longhorn-share-manager image (e.g USER/longhorn-share-manager:testing)"
       - string:
           name: LONGHORN_TESTS_CUSTOM_IMAGE
-          default: "longhornio/longhorn-manager-test:master"
+          default: "longhornio/longhorn-manager-test:v1.1.2-head"
           description: "custom longhorn-manager test image, will be used to run tests"
       - string:
           name: PYTEST_CUSTOM_OPTIONS
@@ -48,7 +48,7 @@
           default: /src/longhorn-tests/test_framework
       - bool:
           name: LONGHORN_UPGRADE_TEST
-          default: true
+          default: false
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
           name: LONGHORN_STABLE_VERSION
@@ -65,18 +65,18 @@
       - string:
           name: AWS_AVAILABILITY_ZONE
           default: "us-east-1c"
-          description: "aws availability zone (e.g us-east-1), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
+          description: "aws availability zone (e.g us-east-1c), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
       - string:
           name: ARCH
-          default: "arm64"
+          default: "amd64"
           description: "architecture of created instances used to run integration tests, supported values: [amd64, arm64]"
       - string:
           name: DISTRO
-          default: "sles"
+          default: "ubuntu"
           description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles]"
       - string:
           name: DISTRO_VERSION
-          default: "15-sp2-v20201211"
+          default: "20.04"
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
              for DISTRO=ubuntu, supported values: [18.04, 20.04], default: [20.04]
@@ -84,17 +84,21 @@
              for DISTRO=sles, supported values: [15-sp2-v20201211], default: [15-sp2-v20201211]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
-          default: "a1.xlarge"
+          default: "t2.xlarge"
           description: "aws instance type for controlplane nodes"
       - string:
           name: WORKER_INSTANCE_TYPE
-          default: "a1.xlarge"
+          default: "t2.xlarge"
           description: "aws instance type for worker nodes"
     pipeline-scm:
       scm:
         - git:
             url: https://github.com/longhorn/longhorn-tests
             branches:
-              - master
+              - v1.1.2
       script-path: test_framework/Jenkinsfile
       lightweight-checkout: true
+    triggers:
+      - timed: |-
+            TZ=America/Los_Angeles
+            H 21 * * *

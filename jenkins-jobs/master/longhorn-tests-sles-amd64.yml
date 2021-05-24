@@ -1,7 +1,7 @@
 - job:
-    name: longhorn-upgrade-tests-sles-amd64
+    name: longhorn-tests-sles-amd64
     project-type: pipeline
-    folder: public/sles/amd64
+    folder: public/master/sles/amd64
     parameters:
       - string:
           name: NOTIFY_SLACK_CHANNEL
@@ -21,23 +21,23 @@
           description: "longhorn-manager repo branch"
       - string:
           name: CUSTOM_LONGHORN_MANAGER_IMAGE
-          default: "longhornio/longhorn-manager:master"
+          default: "longhornio/longhorn-manager:master-head"
           description: "custom longhorn-manager image (e.g USER/longhorn-manager:testing)"
       - string:
           name: CUSTOM_LONGHORN_ENGINE_IMAGE
-          default: "longhornio/longhorn-engine:master"
+          default: "longhornio/longhorn-engine:master-head"
           description: "custom longhorn-engine image (e.g USER/longhorn-engine:testing)"
       - string:
           name: CUSTOM_LONGHORN_INSTANCE_MANAGER_IMAGE
-          default: "longhornio/longhorn-instance-manager:master"
+          default: "longhornio/longhorn-instance-manager:master-head"
           description: "custom longhorn-instance-manager image (e.g USER/longhorn-instance-manager:testing)"
       - string:
           name: CUSTOM_LONGHORN_SHARE_MANAGER_IMAGE
-          default: "longhornio/longhorn-share-manager:master"
+          default: "longhornio/longhorn-share-manager:master-head"
           description: "custom longhorn-share-manager image (e.g USER/longhorn-share-manager:testing)"
       - string:
           name: LONGHORN_TESTS_CUSTOM_IMAGE
-          default: "longhornio/longhorn-manager-test:master"
+          default: "longhornio/longhorn-manager-test:master-head"
           description: "custom longhorn-manager test image, will be used to run tests"
       - string:
           name: PYTEST_CUSTOM_OPTIONS
@@ -48,7 +48,7 @@
           default: /src/longhorn-tests/test_framework
       - bool:
           name: LONGHORN_UPGRADE_TEST
-          default: true
+          default: false
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
           name: LONGHORN_STABLE_VERSION

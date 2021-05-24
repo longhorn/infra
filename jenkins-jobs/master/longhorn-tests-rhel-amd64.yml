@@ -1,8 +1,7 @@
 - job:
-    concurrent: true
-    name: longhorn-tests-regression
+    name: longhorn-tests-rhel-amd64
     project-type: pipeline
-    folder: private
+    folder: public/master/rhel/amd64
     parameters:
       - string:
           name: NOTIFY_SLACK_CHANNEL
@@ -73,11 +72,11 @@
           description: "architecture of created instances used to run integration tests, supported values: [amd64, arm64]"
       - string:
           name: DISTRO
-          default: "ubuntu"
+          default: "rhel"
           description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles]"
       - string:
           name: DISTRO_VERSION
-          default: "20.04"
+          default: "8.3"
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
              for DISTRO=ubuntu, supported values: [18.04, 20.04], default: [20.04]

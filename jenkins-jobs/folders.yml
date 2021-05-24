@@ -3,41 +3,49 @@
     project-type: folder
 
 - job:
-    name: public/ubuntu
+    name: public/master
     project-type: folder
 
 - job:
-    name: public/ubuntu/amd64
+    name: public/master/ubuntu
     project-type: folder
 
 - job:
-    name: public/ubuntu/arm64
+    name: public/master/ubuntu/amd64
     project-type: folder
 
 - job:
-    name: public/rhel
+    name: public/master/ubuntu/arm64
     project-type: folder
 
 - job:
-    name: public/rhel/amd64
+    name: public/master/rhel
     project-type: folder
 
 - job:
-    name: public/rhel/arm64
+    name: public/master/rhel/amd64
     project-type: folder
 
 - job:
-    name: public/sles
+    name: public/master/rhel/arm64
     project-type: folder
 
 - job:
-    name: public/sles/amd64
+    name: public/master/sles
     project-type: folder
 
 - job:
-    name: public/sles/arm64
+    name: public/master/sles/amd64
+    project-type: folder
+
+- job:
+    name: public/master/sles/arm64
     project-type: folder
 
 - job:
     name: private
+    project-type: folder
+
+- job:
+    name: public/v1.1.2
     project-type: folder
