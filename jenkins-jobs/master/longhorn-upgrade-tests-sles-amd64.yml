@@ -36,6 +36,10 @@
           default: "longhornio/longhorn-share-manager:master-head"
           description: "custom longhorn-share-manager image (e.g USER/longhorn-share-manager:testing)"
       - string:
+          name: CUSTOM_LONGHORN_BACKING_IMAGE_MANAGER_IMAGE
+          default: "longhornio/backing-image-manager:master-head"
+          description: "custom backing-image-manager image (e.g USER/backing-image-manager:testing)"
+      - string:
           name: LONGHORN_TESTS_CUSTOM_IMAGE
           default: "longhornio/longhorn-manager-test:master-head"
           description: "custom longhorn-manager test image, will be used to run tests"
