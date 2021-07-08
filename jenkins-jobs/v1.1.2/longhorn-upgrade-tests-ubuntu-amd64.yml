@@ -1,5 +1,6 @@
 - job:
     name: v1.1.2-longhorn-upgrade-tests-ubuntu-amd64
+    disabled: true
     project-type: pipeline
     folder: public/v1.1.2
     parameters:
