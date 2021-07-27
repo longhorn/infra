@@ -47,5 +47,5 @@
     project-type: folder
 
 - job:
-    name: public/v1.1.2
+    name: public/v1.1.3
     project-type: folder
