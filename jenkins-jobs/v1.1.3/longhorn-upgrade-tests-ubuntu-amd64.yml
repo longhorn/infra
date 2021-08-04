@@ -30,16 +30,16 @@
           description: "custom longhorn-engine image (e.g USER/longhorn-engine:testing)"
       - string:
           name: CUSTOM_LONGHORN_INSTANCE_MANAGER_IMAGE
-          default: "longhornio/longhorn-instance-manager:master-head"
-          description: "custom longhorn-instance-manager image (e.g USER/longhorn-instance-manager:testing)"
+          default: ""
+          description: "custom longhorn-instance-manager image (e.g USER/longhorn-instance-manager:testing), leave blank to use the default"
       - string:
           name: CUSTOM_LONGHORN_SHARE_MANAGER_IMAGE
-          default: "longhornio/longhorn-share-manager:master-head"
-          description: "custom longhorn-share-manager image (e.g USER/longhorn-share-manager:testing)"
+          default: ""
+          description: "custom longhorn-share-manager image (e.g USER/longhorn-share-manager:testing), leave blank to use the default"
       - string:
           name: CUSTOM_LONGHORN_BACKING_IMAGE_MANAGER_IMAGE
-          default: "longhornio/backing-image-manager:master-head"
-          description: "custom backing-image-manager image (e.g USER/backing-image-manager:testing)"
+          default: ""
+          description: "custom backing-image-manager image (e.g USER/backing-image-manager:testing), leave blank to use the default"
       - string:
           name: LONGHORN_TESTS_CUSTOM_IMAGE
           default: "longhornio/longhorn-manager-test:v1.1.3-head"
