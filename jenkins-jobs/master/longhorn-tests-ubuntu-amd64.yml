@@ -5,7 +5,7 @@
     parameters:
       - string:
           name: NOTIFY_SLACK_CHANNEL
-          default: "C01PM0C376V"
+          default: "C02D99TKA68"
           description: "slack Channel ID to send job notification (default: T02RW4JDH)"
       - bool:
           name: SEND_SLACK_NOTIFICATION
