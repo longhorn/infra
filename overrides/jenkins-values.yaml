@@ -1,78 +1,80 @@
-master:
-  serviceType: ClusterIP
+---
+controller:
   installPlugins:
-  - pipeline-input-step:2.11
-  - snakeyaml-api:1.26.4
-  - pipeline-model-extensions:1.7.0
-  - plain-credentials:1.7
-  - apache-httpcomponents-client-4-api:4.5.10-2.0
-  - pipeline-rest-api:2.13
-  - pipeline-model-definition:1.7.0
-  - pipeline-stage-step:2.5
-  - command-launcher:1.4
-  - workflow-cps:2.80
-  - okhttp-api:3.14.9
-  - handlebars:1.1.1
-  - durable-task:1.34
-  - kubernetes-credentials:0.7.0
-  - momentjs:1.1.1
-  - jquery-detached:1.2.1
-  - github-api:1.114.3
-  - workflow-api:2.40
-  - matrix-auth:2.6.2
-  - git:4.3.0
-  - authorize-project:1.3.0
-  - github:1.30.0
-  - workflow-basic-steps:2.20
-  - workflow-support:3.5
-  - jackson2-api:2.11.1
-  - mailer:1.32
-  - pipeline-build-step:2.12
-  - git-client:3.3.0
-  - workflow-durable-task-step:2.35
-  - workflow-multibranch:2.21
-  - variant:1.3
-  - token-macro:2.12
-  - cloudbees-folder:6.14
-  - github-oauth:0.33
-  - jdk-tool:1.4
-  - display-url-api:2.3.2
-  - pipeline-graph-analysis:1.10
-  - credentials:2.3.11
-  - pipeline-stage-tags-metadata:1.7.0
-  - structs:1.20
-  - workflow-step-api:2.22
-  - github-branch-source:2.8.2
-  - configuration-as-code:1.41
-  - branch-api:2.5.6
-  - lockable-resources:2.8
-  - authentication-tokens:1.4
-  - workflow-cps-global-lib:2.16
-  - junit:1.29
-  - JiraTestResultReporter:2.0.7
-  - workflow-scm-step:2.11
-  - script-security:1.73
-  - matrix-project:1.17
-  - ssh-credentials:1.18.1
-  - bouncycastle-api:2.18
-  - ace-editor:1.1
-  - workflow-job:2.39
-  - workflow-aggregator:2.6
-  - trilead-api:1.0.8
-  - scm-api:2.6.3
-  - kubernetes-client-api:4.9.2-2
-  - pipeline-model-api:1.7.0
-  - kubernetes:1.26.2
-  - git-server:1.9
-  - pipeline-milestone-step:1.3.1
+  - credentials:2.6.1
+  - plugin-util-api:2.4.0
+  - font-awesome-api:5.15.4-1
+  - pipeline-input-step:2.12
+  - junit:1.53
+  - pipeline-model-extensions:1.9.1
+  - cloudbees-folder:6.16
+  - git-server:1.10
+  - checks-api:1.7.2
+  - workflow-job:2.41
+  - bootstrap5-api:5.1.0-3
+  - workflow-durable-task-step:2.39
+  - jdk-tool:1.0
+  - command-launcher:1.2
+  - jaxb:2.3.0
+  - pipeline-milestone-step:1.3.2
+  - branch-api:2.6.5
+  - pipeline-graph-analysis:1.11
+  - workflow-cps-global-lib:2.21
   - jsch:0.1.55.2
-  - pipeline-stage-view:2.13
-  - credentials-binding:1.23
-  - slack:2.40
-  - job-dsl:1.77
-  - extended-choice-parameter:0.78
+  - plain-credentials:1.7
+  - git-client:3.9.0
+  - sshd:3.1.0
+  - workflow-api:2.46
+  - echarts-api:5.1.2-11
+  - jackson2-api:2.12.4
+  - git:4.8.2
+  - pipeline-rest-api:2.19
+  - bootstrap4-api:4.6.0-3
+  - ssh-credentials:1.19
+  - kubernetes-client-api:5.4.1
+  - variant:1.4
+  - apache-httpcomponents-client-4-api:4.5.13-1.0
+  - pipeline-model-api:1.9.1
+  - script-security:1.78
+  - momentjs:1.1.1
+  - credentials-binding:1.27
+  - pipeline-stage-step:2.5
+  - kubernetes-credentials:0.9.0
+  - lockable-resources:2.11
+  - pipeline-stage-view:2.19
+  - mailer:1.34
+  - workflow-multibranch:2.26
+  - pipeline-model-definition:1.9.1
+  - workflow-step-api:2.24
+  - trilead-api:1.0.13
+  - configuration-as-code:1.52
+  - snakeyaml-api:1.29.1
+  - popper2-api:2.9.3-1
+  - workflow-aggregator:2.6
+  - handlebars:3.0.8
+  - workflow-cps:2.93
+  - workflow-basic-steps:2.24
+  - structs:1.23
+  - pipeline-build-step:2.15
+  - matrix-project:1.19
+  - authentication-tokens:1.4
+  - bouncycastle-api:2.24
+  - jquery3-api:3.6.0-2
+  - workflow-scm-step:2.13
+  - ace-editor:1.1
+  - caffeine-api:2.9.2-29.v717aac953ff3
+  - popper-api:1.16.1-2
+  - pipeline-stage-tags-metadata:1.9.1
+  - kubernetes:1.30.1
+  - workflow-support:3.8
+  - durable-task:1.39
+  - metrics:4.0.2.8
+  - display-url-api:2.3.5
+  - scm-api:2.6.5
+  - github-oauth:0.33
+  - matrix-auth:2.6.8
   - test-results-analyzer:0.3.5
-  overwritePlugins: true
+  - slack:2.48
   ingress:
     enabled: true
     apiVersion: "networking.k8s.io/v1beta1"
@@ -85,12 +87,13 @@ master:
     - secretName: ci.longhorn.io
       hosts:
       - ci.longhorn.io
-  secretsFilesSecret: "jenkins-secrets"
-  containerEnv:
-    - name: SECRETS
-      value: /var/jenkins_secrets
+  additionalExistingSecrets:
+  - name: jenkins-v3-secrets
+    keyName: github-oauth-client-id
+  - name: jenkins-v3-secrets
+    keyName: github-oauth-client-secret
   JCasC:
-    enabled: true
+    defaultConfig: true
     sidecars:
       configAutoReload:
         enabled: true
@@ -98,8 +101,8 @@ master:
         github:
           githubWebUri: "https://github.com"
           githubApiUri: "https://api.github.com"
-          clientID: ${GITHUB_OAUTH_CLIENT_ID}
-          clientSecret: ${GITHUB_OAUTH_CLIENT_SECRET}
+          clientID: ${jenkins-v3-secrets-github-oauth-client-id}
+          clientSecret: ${jenkins-v3-secrets-github-oauth-client-secret}
           oauthScopes: "read:org,user:email"
     authorizationStrategy: |-
         projectMatrix:
@@ -113,33 +116,46 @@ master:
             - "Job/Build:longhorn*dev"
             - "Job/Cancel:longhorn*qa"
             - "Job/Build:longhorn*dev"
-    configScripts:
-      jobs-config: |
-        jobs:
-          - script: >
-              folder('private') {
-                properties {
-                  authorizationMatrix {
-                    inheritanceStrategy {
-                        nonInheriting()
-                    }
-                    permissions([
-                        "Job/Read:longhorn*dev",
-                        'Job/Build:longhorn*dev',
-                        'Job/Cancel:longhorn*dev',
-                        'Job/Configure:longhorn*infra',
-                        "Job/Delete:longhorn*infra",
-                    ])
-                  }
-                }
+    configScripts:                                                              
+      jobs-config: |                                                            
+        jobs:                                                                   
+          - script: >                                                           
+              folder('private') {                                               
+                properties {                                                    
+                  authorizationMatrix {                                         
+                    inheritanceStrategy {                                       
+                        nonInheriting()                                         
+                    }                                                           
+                    permissions([                                               
+                        'Job/Read:longhorn*dev',                                
+                        'Job/Build:longhorn*dev',                               
+                        'Job/Cancel:longhorn*dev',                              
+                        'Job/Read:longhorn*qa',                                 
+                        'Job/Build:longhorn*qa',                                
+                        'Job/Cancel:longhorn*qa',                               
+                        'Job/Configure:longhorn*infra',                         
+                        'Job/Delete:longhorn*infra',                            
+                    ])                                                          
+                  }                                                             
+                }                                                               
               }
-                
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/arch
+            operator: In
+            values:
+            - amd64
 persistence:
   enabled: true
-  existingClaim: jenkins
+  existingClaim: jenkins-v3
 agent:
-  image: "meldafrawi/jnlp-slave"
-  imageTag: "latest"
+  nodeSelector:
+    kubernetes.io/arch: amd64
+  image: "meldafrawi/jnlp-agent"
+  tag: "20210913"
   privileged: true
   idleMinutes: 20
   resources:
