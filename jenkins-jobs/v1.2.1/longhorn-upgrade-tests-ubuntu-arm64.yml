@@ -1,0 +1,109 @@
+- job:
+    name: v1.2.x-longhorn-upgrade-tests-ubuntu-arm64
+    disabled: false
+    project-type: pipeline
+    folder: public/v1.2.x
+    parameters:
+      - string:
+          name: NOTIFY_SLACK_CHANNEL
+          default: "C01PM0C376V"
+          description: "slack Channel ID to send job notification (default: T02RW4JDH)"
+      - bool:
+          name: SEND_SLACK_NOTIFICATION
+          default: true
+          description: "send slack notification? (default: true)"
+      - string:
+          name: LONGHORN_MANAGER_REPO_URI
+          default: "https://github.com/longhorn/longhorn-manager.git"
+          description: "longhorn-manager repo URI"
+      - string:
+          name: LONGHORN_MANAGER_BRANCH
+          default: "v1.2.x"
+          description: "longhorn-manager repo branch"
+      - string:
+          name: CUSTOM_LONGHORN_MANAGER_IMAGE
+          default: "longhornio/longhorn-manager:v1.2.x-head"
+          description: "custom longhorn-manager image (e.g USER/longhorn-manager:testing)"
+      - string:
+          name: CUSTOM_LONGHORN_ENGINE_IMAGE
+          default: "longhornio/longhorn-engine:v1.2.x-head"
+          description: "custom longhorn-engine image (e.g USER/longhorn-engine:testing)"
+      - string:
+          name: CUSTOM_LONGHORN_INSTANCE_MANAGER_IMAGE
+          default: ""
+          description: "custom longhorn-instance-manager image (e.g USER/longhorn-instance-manager:testing), leave blank to use the default"
+      - string:
+          name: CUSTOM_LONGHORN_SHARE_MANAGER_IMAGE
+          default: ""
+          description: "custom longhorn-share-manager image (e.g USER/longhorn-share-manager:testing), leave blank to use the default"
+      - string:
+          name: CUSTOM_LONGHORN_BACKING_IMAGE_MANAGER_IMAGE
+          default: ""
+          description: "custom backing-image-manager image (e.g USER/backing-image-manager:testing), leave blank to use the default"
+      - string:
+          name: LONGHORN_TESTS_CUSTOM_IMAGE
+          default: "longhornio/longhorn-manager-test:v1.2.x-head"
+          description: "custom longhorn-manager test image, will be used to run tests"
+      - string:
+          name: PYTEST_CUSTOM_OPTIONS
+          default: ""
+          description: "pytest custom options to run specific tests (e.g -k test_hosts)"
+      - string:
+          name: TF_VAR_tf_workspace
+          default: /src/longhorn-tests/test_framework
+      - bool:
+          name: LONGHORN_UPGRADE_TEST
+          default: true
+          description: "run longhorn upgrade test, then run longhorn test suite"
+      - string:
+          name: LONGHORN_STABLE_VERSION
+          default: "v1.1.1"
+          description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
+      - string:
+          name: LONGHORN_TEST_CLOUDPROVIDER
+          default: "aws"
+          description: "cloudprovider used to run test suite, supported values:[aws]"
+      - string:
+          name: AWS_REGION
+          default: "us-east-1"
+          description: "aws region (e.g us-east-1), effective only when using aws as cloudprovider"
+      - string:
+          name: AWS_AVAILABILITY_ZONE
+          default: "us-east-1c"
+          description: "aws availability zone (e.g us-east-1c), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
+      - string:
+          name: ARCH
+          default: "arm64"
+          description: "architecture of created instances used to run integration tests, supported values: [amd64, arm64]"
+      - string:
+          name: DISTRO
+          default: "ubuntu"
+          description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles]"
+      - string:
+          name: DISTRO_VERSION
+          default: "20.04"
+          description: |
+             Linux distro version to install on created instances, choosed based on DISTRO values
+             for DISTRO=ubuntu, supported values: [18.04, 20.04], default: [20.04]
+             for DISTRO=rhel, supported values: [7.9 ,8.3], default: [8.3]
+             for DISTRO=sles, supported values: [15-sp2-v20201211], default: [15-sp2-v20201211]
+      - string:
+          name: CONTROLPLANE_INSTANCE_TYPE
+          default: "a1.xlarge"
+          description: "aws instance type for controlplane nodes"
+      - string:
+          name: WORKER_INSTANCE_TYPE
+          default: "a1.xlarge"
+          description: "aws instance type for worker nodes"
+    pipeline-scm:
+      scm:
+        - git:
+            url: https://github.com/longhorn/longhorn-tests
+            branches:
+              - v1.2.x
+      script-path: test_framework/Jenkinsfile
+      lightweight-checkout: true
+    triggers:
+      - timed: |-
+            TZ=America/Los_Angeles
+            H 21 * * *
