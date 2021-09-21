@@ -84,8 +84,8 @@
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
              for DISTRO=ubuntu, supported values: [18.04, 20.04], default: [20.04]
-             for DISTRO=rhel, supported values: [7.9 ,8.3], default: [8.3]
-             for DISTRO=sles, supported values: [15-sp2-v20201211], default: [15-sp2-v20201211]
+             for DISTRO=rhel, supported values: [7.9 ,8.4], default: [8.3]
+             for DISTRO=sles, supported values: [15-sp3-v20210622], default: [15-sp3-v20210622]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "t2.xlarge"
