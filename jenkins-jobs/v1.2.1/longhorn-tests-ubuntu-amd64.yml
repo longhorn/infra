@@ -1,5 +1,5 @@
 - job:
-    name: v1.2.x-longhorn-tests-ubuntu-amd64
+    name: v1.2.x-lh-tests-ubuntu-amd64
     disabled: false
     project-type: pipeline
     folder: public/v1.2.x
