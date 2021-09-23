@@ -1,5 +1,5 @@
 - job:
-    name: v1.2.x-longhorn-upgrade-tests-ubuntu-arm64
+    name: v1.2.x-lh-upgrade-tests-ubuntu-arm64
     disabled: false
     project-type: pipeline
     folder: public/v1.2.x
