@@ -1,5 +1,5 @@
 - job:
-    name: longhorn-tests-ubuntu-amd64
+    name: longhorn-tests-ubuntu-amd64-s3
     project-type: pipeline
     folder: public/master/ubuntu/amd64
     parameters:
