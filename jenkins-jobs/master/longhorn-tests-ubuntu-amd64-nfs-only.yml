@@ -104,7 +104,7 @@
             url: https://github.com/longhorn/longhorn-tests
             branches:
               - master
-      script-path: test_framework/Jenkinsfile_nfs
+      script-path: test_framework/Jenkinsfile
       lightweight-checkout: true
     triggers:
       - timed: |-
