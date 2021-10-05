@@ -48,10 +48,6 @@
           default: ""
           description: "pytest custom options to run specific tests (e.g -k test_hosts)"
       - string:
-          name: BACKUP_STORE_TYPE
-          default: "nfs-and-s3"
-          description: "The valid values for this field are 'nfs', 's3' and 'nfs-and-s3'"
-      - string:
           name: TF_VAR_tf_workspace
           default: /src/longhorn-tests/test_framework
       - bool:
@@ -59,8 +55,12 @@
           default: false
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
+          name: BACKUP_STORE_TYPE
+          default: "s3"
+          description: "The valid values for this field are 'nfs', 's3' and 'nfs-and-s3'"
+      - string:
           name: LONGHORN_STABLE_VERSION
-          default: "v1.2.0"
+          default: "v1.2.1"
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: LONGHORN_TEST_CLOUDPROVIDER
@@ -88,8 +88,8 @@
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
              for DISTRO=ubuntu, supported values: [18.04, 20.04], default: [20.04]
-             for DISTRO=rhel, supported values: [7.9 ,8.3, 8.4.0, 8.4.0], default: [8.3]
-             for DISTRO=sles, supported values: [15-sp3-v20210622], default: [15-sp3-v20210622]
+             for DISTRO=rhel, supported values: [7.9 ,8.3], default: [8.3]
+             for DISTRO=sles, supported values: [15-sp2-v20201211], default: [15-sp2-v20201211]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "t2.xlarge"
@@ -104,9 +104,9 @@
             url: https://github.com/longhorn/longhorn-tests
             branches:
               - master
-      script-path: test_framework/Jenkinsfile
+      script-path: test_framework/Jenkinsfile_s3
       lightweight-checkout: true
     triggers:
       - timed: |-
             TZ=America/Los_Angeles
-            H 21 * * *
+            H 21 ? * TUE,THU,SAT *
