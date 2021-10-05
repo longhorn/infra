@@ -55,7 +55,7 @@
           default: false
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
-	  name: BACKUP_STORE_TYPE
+          name: BACKUP_STORE_TYPE
           default: "nfs"
           description: "The valid values for this field are 'nfs', 's3' and 'nfs-and-s3'"
       - string:
