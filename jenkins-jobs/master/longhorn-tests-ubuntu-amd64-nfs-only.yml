@@ -109,4 +109,4 @@
     triggers:
       - timed: |-
             TZ=America/Los_Angeles
-            H 21 ? * MON,WED,FRI *
+            H 21 * * 1,3,5

@@ -56,6 +56,10 @@
           default: false
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
+          name: BACKUP_STORE_TYPE
+          default: "nfs-and-s3"
+          description: "The valid values for this field are 'nfs', 's3' and 'nfs-and-s3'"
+      - string:
           name: LONGHORN_STABLE_VERSION
           default: "v1.1.1"
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
