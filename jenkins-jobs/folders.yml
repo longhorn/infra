@@ -43,6 +43,31 @@
     project-type: folder
 
 - job:
+    name: public/master/centos
+    project-type: folder
+
+- job:
+    name: public/master/centos/amd64
+    project-type: folder
+
+- job:
+    name: public/master/oracle
+    project-type: folder
+
+- job:
+    name: public/master/oracle/amd64
+    project-type: folder
+
+- job:
+    name: public/master/rockylinux
+    project-type: folder
+
+- job:
+    name: public/master/rockylinux/amd64
+    project-type: folder
+
+
+- job:
     name: private
     project-type: folder
 
