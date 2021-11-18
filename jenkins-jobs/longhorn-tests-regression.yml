@@ -61,7 +61,7 @@
           description: "The valid values for this field are 'nfs', 's3' and 'nfs-and-s3'"
       - string:
           name: LONGHORN_STABLE_VERSION
-          default: "v1.1.1"
+          default: "v1.2.2"
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: LONGHORN_TEST_CLOUDPROVIDER
@@ -74,7 +74,7 @@
       - string:
           name: AWS_AVAILABILITY_ZONE
           default: "us-east-1c"
-          description: "aws availability zone (e.g us-east-1), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
+          description: "aws availability zone (e.g us-east-1c), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
       - string:
           name: ARCH
           default: "amd64"
@@ -82,7 +82,7 @@
       - string:
           name: DISTRO
           default: "ubuntu"
-          description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles]"
+          description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles, centos, oracle, rockylinux]"
       - string:
           name: DISTRO_VERSION
           default: "20.04"
@@ -90,7 +90,10 @@
              Linux distro version to install on created instances, choosed based on DISTRO values
              for DISTRO=ubuntu, supported values: [18.04, 20.04], default: [20.04]
              for DISTRO=rhel, supported values: [7.9 ,8.3, 8.4.0, 8.4.0], default: [8.3]
-             for DISTRO=sles, supported values: [15-sp3-v20210622], default: [15-sp2-v20201211]
+             for DISTRO=sles, supported values: [15-sp3-v20210622], default: [15-sp3-v20210622]
+             for DISTRO=centos, supported values: [8.4], default: [8.4]
+             for DISTRO=oracle, supported values: [8.3], default: [8.3]
+             for DISTRO=rockylinux, supported values: [8.4], default: [8.4]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "t2.xlarge"
