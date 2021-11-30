@@ -98,6 +98,12 @@
           name: WORKER_INSTANCE_TYPE
           default: "t2.xlarge"
           description: "aws instance type for worker nodes"
+      - choice:
+          name: SELINUX_MODE
+          choices:
+          - permissive
+          - enfrocing
+          description: "SELINUX mode [permissive | enforcing] (available only for CentOS and RedHat)  default: permissive"
     pipeline-scm:
       scm:
         - git:
