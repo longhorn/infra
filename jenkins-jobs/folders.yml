@@ -51,6 +51,10 @@
     project-type: folder
 
 - job:
+    name: public/master/centos/arm64
+    project-type: folder
+
+- job:
     name: public/master/oracle
     project-type: folder
 
@@ -64,6 +68,10 @@
 
 - job:
     name: public/master/rockylinux/amd64
+    project-type: folder
+
+- job:
+    name: public/master/rockylinux/arm64
     project-type: folder
 
 

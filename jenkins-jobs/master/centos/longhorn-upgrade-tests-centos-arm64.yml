@@ -1,7 +1,7 @@
 - job:
     name: longhorn-upgrade-tests-centos-arm64
     project-type: pipeline
-    folder: public/master/centos/amd64
+    folder: public/master/centos/arm64
     parameters:
       - string:
           name: NOTIFY_SLACK_CHANNEL
