@@ -1,7 +1,7 @@
 - job:
     name: longhorn-tests-rockylinux-arm64
     project-type: pipeline
-    folder: public/master/rockylinux/arm64
+    folder: public/master/rockylinux/amd64
     parameters:
       - string:
           name: NOTIFY_SLACK_CHANNEL
