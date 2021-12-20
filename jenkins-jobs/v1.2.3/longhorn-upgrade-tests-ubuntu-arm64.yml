@@ -107,9 +107,3 @@
               - v1.2.x
       script-path: test_framework/Jenkinsfile
       lightweight-checkout: true
-    triggers:
-      - parameterized-timer:
-          cron: |
-            TZ=America/Los_Angeles
-            H 21 * * 0,1,3,5 % BACKUP_STORE_TYPE=s3
-            H 21 * * 2,4,6 % BACKUP_STORE_TYPE=nfs
