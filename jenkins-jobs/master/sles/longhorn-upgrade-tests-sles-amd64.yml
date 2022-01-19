@@ -79,6 +79,17 @@
           default: "amd64"
           description: "architecture of created instances used to run integration tests, supported values: [amd64, arm64]"
       - string:
+          name: K8S_DISTRO_NAME
+          default: "k3s"
+          description: "kubernetes distro version to install [rke, k3s] (default: k3s)"
+      - string:
+          name: K8S_DISTRO_VERSION
+          default: "v1.20.8+k3s1"
+          description: |
+              kubernetes version that will be deployed
+              for rke: (default: v1.20.8-rancher1-1)
+              for k3s: (default: v1.20.8+k3s1)
+      - string:
           name: DISTRO
           default: "sles"
           description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles, centos, oracle, rockylinux]"
@@ -88,8 +99,11 @@
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
              for DISTRO=ubuntu, supported values: [18.04, 20.04], default: [20.04]
-             for DISTRO=rhel, supported values: [7.9 ,8.3, 8.4.0, 8.4.0], default: [8.3]
+             for DISTRO=rhel, supported values: [7.9 ,8.3, 8.4.0], default: [8.3]
              for DISTRO=sles, supported values: [15-sp3-v20210622], default: [15-sp3-v20210622]
+             for DISTRO=centos, supported values: [8.4], default: [8.4]
+             for DISTRO=oracle, supported values: [8.3], default: [8.3]
+             for DISTRO=rockylinux, supported values: [8.4], default: [8.4]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "t2.xlarge"
