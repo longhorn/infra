@@ -1,5 +1,5 @@
 - job:
-    name: longhorn-tests-sles-arm64
+    name: v1.1.x-longhorn-tests-sles-arm64
     project-type: pipeline
     folder: public/v1.1.x
     parameters:
