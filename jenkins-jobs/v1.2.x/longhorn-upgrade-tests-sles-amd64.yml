@@ -1,5 +1,5 @@
 - job:
-    name: longhorn-upgrade-tests-sles-amd64
+    name: v1.2.x-longhorn-upgrade-tests-sles-amd64
     project-type: pipeline
     folder: public/v1.2.x
     parameters:
