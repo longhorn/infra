@@ -20,7 +20,7 @@
         query_plugins_info=False
         EOT
 
-        jenkins-jobs --conf ./jenkins_jobs.ini update -r ./jenkins-jobs/
+        jenkins-jobs --conf ./jenkins_jobs.ini --flush-cache update -r ./jenkins-jobs/
         rm -rf jenkins_jobs.ini
     concurrent: false
     disabled: false
