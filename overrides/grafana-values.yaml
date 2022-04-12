@@ -35,3 +35,12 @@ ingress:
     - secretName: metrics.longhorn.io
       hosts:
       - metrics.longhorn.io
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/arch
+          operator: In
+          values:
+          - amd64
