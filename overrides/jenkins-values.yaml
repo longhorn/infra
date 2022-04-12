@@ -1,82 +1,112 @@
 ---
 controller:
+  overwritePlugins: true
   installPlugins:
-  - credentials:2.6.1
-  - plugin-util-api:2.4.0
-  - font-awesome-api:5.15.4-1
-  - pipeline-input-step:2.12
-  - junit:1.53
-  - pipeline-model-extensions:1.9.1
-  - cloudbees-folder:6.16
-  - git-server:1.10
-  - checks-api:1.7.2
-  - workflow-job:2.41
-  - bootstrap5-api:5.1.0-3
-  - workflow-durable-task-step:2.39
-  - jdk-tool:1.0
-  - command-launcher:1.2
-  - jaxb:2.3.0
-  - pipeline-milestone-step:1.3.2
-  - branch-api:2.6.5
-  - pipeline-graph-analysis:1.11
-  - workflow-cps-global-lib:2.21
-  - jsch:0.1.55.2
-  - plain-credentials:1.7
-  - git-client:3.9.0
-  - sshd:3.1.0
-  - workflow-api:2.46
-  - echarts-api:5.1.2-11
-  - jackson2-api:2.12.4
-  - git:4.8.2
-  - pipeline-rest-api:2.19
-  - bootstrap4-api:4.6.0-3
-  - ssh-credentials:1.19
   - kubernetes-client-api:5.4.1
-  - variant:1.4
-  - apache-httpcomponents-client-4-api:4.5.13-1.0
-  - pipeline-model-api:1.9.1
-  - script-security:1.78
-  - momentjs:1.1.1
-  - credentials-binding:1.27
-  - pipeline-stage-step:2.5
   - kubernetes-credentials:0.9.0
-  - lockable-resources:2.11
-  - pipeline-stage-view:2.19
-  - mailer:1.34
-  - workflow-multibranch:2.26
-  - pipeline-model-definition:1.9.1
-  - workflow-step-api:2.24
-  - trilead-api:1.0.13
-  - configuration-as-code:1.52
-  - snakeyaml-api:1.29.1
-  - popper2-api:2.9.3-1
-  - workflow-aggregator:2.6
-  - handlebars:3.0.8
-  - workflow-cps:2.93
-  - workflow-basic-steps:2.24
-  - structs:1.23
-  - pipeline-build-step:2.15
-  - matrix-project:1.19
-  - authentication-tokens:1.4
-  - bouncycastle-api:2.24
-  - jquery3-api:3.6.0-2
-  - workflow-scm-step:2.13
-  - ace-editor:1.1
-  - caffeine-api:2.9.2-29.v717aac953ff3
-  - popper-api:1.16.1-2
-  - pipeline-stage-tags-metadata:1.9.1
   - kubernetes:1.30.1
-  - workflow-support:3.8
-  - durable-task:1.39
-  - metrics:4.0.2.8
+  - configuration-as-code:1.55.1
+# ----------------------
+  - ace-editor:1.1
+  - ant:1.13
+  - antisamy-markup-formatter:2.7
+  - apache-httpcomponents-client-4-api:4.5.13-1.0
+  - blueocean-commons:1.25.3
+  - blueocean-pipeline-scm-api:1.25.3
+  - blueocean-rest:1.25.3
+  - bootstrap4-api:4.6.0-3
+  - bootstrap5-api:5.1.3-6
+  - bouncycastle-api:2.25
+  - branch-api:2.7.0
+  - build-timeout:1.20
+  - caffeine-api:2.9.2-29.v717aac953ff3
+  - checks-api:1.7.2
+  - cloudbees-folder:6.708.ve61636eb_65a_5
+  - command-launcher:1.6
+  - credentials-binding:1.27.1
+  - credentials:1074.v60e6c29b_b_44b_
   - display-url-api:2.3.5
-  - scm-api:2.6.5
-  - github-oauth:0.33
-  - matrix-auth:2.6.8
-  - test-results-analyzer:0.3.5
-  - slack:2.48
+  - display-url-api:2.3.5
+  - durable-task:493.v195aefbb0ff2
+  - echarts-api:5.3.0-2
+  - email-ext:2.87
+  - extended-choice-parameter:346.vd87693c5a_86c
+  - font-awesome-api:6.0.0-1
+  - git-client:3.11.0
+  - git-server:1.10
+  - git:4.10.3
+  - github-api:1.301-378.v9807bd746da5
+  - github-branch-source:1583.v18d333ef7379
+  - github-oauth:0.37
+  - github:1.34.3
+  - gradle:1.38
+  - handlebars:3.0.8
+  - jackson2-api:2.13.2-260.v43d711474c77
+  - javax-activation-api:1.2.0-2
+  - javax-mail-api:1.6.2-5
+  - jaxb:2.3.0.1
+  - jdk-tool:1.5
+  - jjwt-api:0.11.2-9.c8b45b8bb173
+  - jnr-posix-api:3.1.7-3
   - job-dsl:1.77
-  - extended-choice-parameter:0.82
+  - job-dsl:1.78.3
+  - jquery3-api:3.6.0-2
+  - jsch:0.1.55.2
+  - junit:1.56
+  - ldap:2.8
+  - lockable-resources:2.14
+  - mailer:408.vd726a_1130320
+  - matrix-auth:2.6.8
+  - matrix-auth:3.1
+  - matrix-project:758.v7a_ea_491852f3
+  - metrics:4.0.2.8.1
+  - momentjs:1.1.1
+  - okhttp-api:4.9.3-105.vb96869f8ac3a
+  - pam-auth:1.7
+  - parameterized-scheduler:1.0
+  - pipeline-build-step:2.16
+  - pipeline-github-lib:36.v4c01db_ca_ed16
+  - pipeline-graph-analysis:188.v3a01e7973f2c
+  - pipeline-input-step:446.vf27b_0b_83500e
+  - pipeline-milestone-step:100.v60a_03cd446e1
+  - pipeline-model-api:2.2064.v5eef7d0982b_e
+  - pipeline-model-definition:2.2064.v5eef7d0982b_e
+  - pipeline-model-extensions:2.2064.v5eef7d0982b_e
+  - pipeline-rest-api:2.23
+  - pipeline-stage-step:291.vf0a8a7aeeb50
+  - pipeline-stage-tags-metadata:2.2064.v5eef7d0982b_e
+  - pipeline-stage-view:2.23
+  - plain-credentials:1.8
+  - plugin-util-api:2.14.0
+  - popper-api:1.16.1-2
+  - popper2-api:2.11.2-1
+  - pubsub-light:1.16
+  - resource-disposer:0.17
+  - scm-api:2.6.5
+  - scm-api:595.vd5a_df5eb_0e39
+  - script-security:1140.vf967fb_efa_55a_
+  - slack:2.48
+  - snakeyaml-api:1.29.1
+  - ssh-credentials:1.19
+  - ssh-slaves:1.806.v2253cedd3295
+  - sshd:3.1.0
+  - structs:308.v852b473a2b8c
+  - test-results-analyzer:0.3.5
+  - timestamper:1.17
+  - token-macro:280.v97a_82642793c
+  - trilead-api:1.0.13
+  - workflow-aggregator:2.7
+  - workflow-api:1143.v2d42f1e9dea_5
+  - workflow-basic-steps:941.vdfe1b_a_132c64
+  - workflow-cps-global-lib:564.ve62a_4eb_b_e039
+  - workflow-cps:2660.vb_c0412dc4e6d
+  - workflow-durable-task-step:1121.va_65b_d2701486
+  - workflow-job:1174.vdcb_d054cf74a_
+  - workflow-multibranch:711.vdfef37cda_816
+  - workflow-scm-step:2.13
+  - workflow-step-api:622.vb_8e7c15b_c95a_
+  - workflow-support:815.vd60466279fc8
+  - ws-cleanup:0.40
   ingress:
     enabled: true
     apiVersion: "networking.k8s.io/v1beta1"
@@ -114,32 +144,32 @@ controller:
             - "Overall/Read:longhorn*dev"
             - "Overall/Read:anonymous"
             - "Job/Read:anonymous"
+            - "Job/Build:longhorn*dev"
             - "Job/Build:longhorn*qa"
-            - "Job/Build:longhorn*dev"
+            - "Job/Cancel:longhorn*dev"
             - "Job/Cancel:longhorn*qa"
-            - "Job/Build:longhorn*dev"
-    configScripts:                                                              
-      jobs-config: |                                                            
-        jobs:                                                                   
-          - script: >                                                           
-              folder('private') {                                               
-                properties {                                                    
-                  authorizationMatrix {                                         
-                    inheritanceStrategy {                                       
-                        nonInheriting()                                         
-                    }                                                           
-                    permissions([                                               
-                        'Job/Read:longhorn*dev',                                
-                        'Job/Build:longhorn*dev',                               
-                        'Job/Cancel:longhorn*dev',                              
-                        'Job/Read:longhorn*qa',                                 
-                        'Job/Build:longhorn*qa',                                
-                        'Job/Cancel:longhorn*qa',                               
-                        'Job/Configure:longhorn*infra',                         
-                        'Job/Delete:longhorn*infra',                            
-                    ])                                                          
-                  }                                                             
-                }                                                               
+    configScripts:
+      jobs-config: |
+        jobs:
+          - script: >
+              folder('private') {
+                properties {
+                  authorizationMatrix {
+                    inheritanceStrategy {
+                        nonInheriting()
+                    }
+                    permissions([
+                        'Job/Read:longhorn*dev',
+                        'Job/Build:longhorn*dev',
+                        'Job/Cancel:longhorn*dev',
+                        'Job/Read:longhorn*qa',
+                        'Job/Build:longhorn*qa',
+                        'Job/Cancel:longhorn*qa',
+                        'Job/Configure:longhorn*infra',
+                        'Job/Delete:longhorn*infra',
+                    ])
+                  }
+                }
               }
   affinity:
     nodeAffinity:
@@ -150,23 +180,30 @@ controller:
             operator: In
             values:
             - amd64
+  nodeSelector:
+    beta.kubernetes.io/arch: amd64
+    k3s.io/hostname: longhorn-infra-controlplane
 persistence:
   enabled: true
   existingClaim: jenkins-v3
 agent:
   nodeSelector:
-    kubernetes.io/arch: amd64
+    beta.kubernetes.io/arch: amd64
+    k3s.io/hostname: longhorn-infra-controlplane
   image: "meldafrawi/jnlp-agent"
-  tag: "20210913"
+  tag: "20220310"
+  jenkinsUrl: "https://ci.longhorn.io"
+  maxRequestsPerHostStr: "1024"
+  containerCap: 64
   privileged: true
   idleMinutes: 20
   resources:
     requests:
       cpu: "600m"
-      memory: "1Gi"
+      memory: "2Gi"
     limits:
       cpu: "800m"
-      memory: "2Gi"
+      memory: "4Gi"
   volumes:
     - type: HostPath
       hostPath: /var/run/docker.sock

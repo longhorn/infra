@@ -1,4 +1,6 @@
 ---
+image:
+  tag: "2.11.1"
 updateStrategy:
   type: Recreate
 extraSecretNamesForEnvFrom:
@@ -10,6 +12,7 @@ env:
 ingress:
     enabled: true
     annotations:
+      nginx.ingress.kubernetes.io/proxy-body-size: 40m
       kubernetes.io/ingress.class: nginx
       cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts:
@@ -25,3 +28,12 @@ persistentVolume:
   accessModes:
     - ReadWriteOnce
   existingClaim: "drone-pr"
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/arch
+          operator: In
+          values:
+          - amd64
