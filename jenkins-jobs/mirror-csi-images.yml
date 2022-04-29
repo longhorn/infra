@@ -1,0 +1,29 @@
+- job:
+    concurrent: true
+    name: mirror-csi-images
+    project-type: pipeline
+    folder: private
+    parameters:
+      - string:
+          name: NOTIFY_SLACK_CHANNEL
+          default: ""
+          description: "slack Channel ID to send job notification (default: T02RW4JDH)"
+      - bool:
+          name: SEND_SLACK_NOTIFICATION
+          default: true
+          description: "send slack notification? (default: true)"
+      - string:
+          name: CSI_IMAGES
+          default: "csi-attacher:v3.2.1"
+          description: "CSI_IMAGE_NAME:TAG (multiple values can be supplied by separated with commas. e.g CSI_IMAGE_NAME1:TAG1,CSI_IMAGE_NAME2:TAG2)"
+      - string:
+          name: TF_VAR_tf_workspace
+          default: /src/longhorn-tests/mirror_csi_images
+    pipeline-scm:
+      scm:
+        - git:
+            url: https://github.com/longhorn/longhorn-tests
+            branches:
+              - master
+      script-path: mirror_csi_images/Jenkinsfile
+      lightweight-checkout: true
