@@ -17,9 +17,33 @@
           default: true
           description: "send slack notification? (default: true)"
       - string:
-          name: LONGHORN_VERSION
+          name: LONGHORN_MANAGER_REPO_URI
+          default: "https://github.com/longhorn/longhorn-manager.git"
+          description: "longhorn-manager repo URI"
+      - string:
+          name: LONGHORN_MANAGER_BRANCH
           default: "master"
-          description: "version longhorn to be tested"
+          description: "longhorn-manager repo branch"
+      - string:
+          name: CUSTOM_LONGHORN_MANAGER_IMAGE
+          default: "longhornio/longhorn-manager:master-head"
+          description: "custom longhorn-manager image (e.g USER/longhorn-manager:testing)"
+      - string:
+          name: CUSTOM_LONGHORN_ENGINE_IMAGE
+          default: "longhornio/longhorn-engine:master-head"
+          description: "custom longhorn-engine image (e.g USER/longhorn-engine:testing)"
+      - string:
+          name: CUSTOM_LONGHORN_INSTANCE_MANAGER_IMAGE
+          default: ""
+          description: "custom longhorn-instance-manager image (e.g USER/longhorn-instance-manager:testing), leave blank to use the default"
+      - string:
+          name: CUSTOM_LONGHORN_SHARE_MANAGER_IMAGE
+          default: ""
+          description: "custom longhorn-share-manager image (e.g USER/longhorn-share-manager:testing), leave blank to use the default"
+      - string:
+          name: CUSTOM_LONGHORN_BACKING_IMAGE_MANAGER_IMAGE
+          default: ""
+          description: "custom backing-image-manager image (e.g USER/backing-image-manager:testing), leave blank to use the default"
       - string:
           name: LONGHORN_TESTS_CUSTOM_IMAGE
           default: "longhornio/longhorn-manager-test:master-head"
