@@ -94,6 +94,7 @@ controller:
   - timestamper:1.17
   - token-macro:280.v97a_82642793c
   - trilead-api:1.0.13
+  - uno-choice:2.6.1
   - workflow-aggregator:2.7
   - workflow-api:1143.v2d42f1e9dea_5
   - workflow-basic-steps:941.vdfe1b_a_132c64

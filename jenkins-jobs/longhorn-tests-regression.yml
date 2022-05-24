@@ -4,50 +4,162 @@
     project-type: pipeline
     folder: private
     parameters:
-      - string:
-          name: NOTIFY_SLACK_CHANNEL
-          default: ""
-          description: "slack Channel ID to send job notification (default: T02RW4JDH)"
       - bool:
           name: SEND_SLACK_NOTIFICATION
           default: true
           description: "send slack notification? (default: true)"
       - string:
+          name: NOTIFY_SLACK_CHANNEL
+          default: ""
+          description: "slack Channel ID to send job notification (default: T02RW4JDH)"
+      - bool:
+          name: AIR_GAP_INSTALLATION
+          default: false
+          description: "if set to true, a private registry would be setup and longhorn images would be pulled from it (default: false)"
+      - active-choices-reactive:
+          name: LONGHORN_INSTALL_METHOD
+          description: ""
+          script:
+            groovy: |-
+              if (AIR_GAP_INSTALLATION) {
+                return ['manifest-file', 'helm-chart']
+              } else {
+                return ['custom', 'manifest-file', 'helm-chart']
+              }
+            use-groovy-sandbox: false
+          choice-type: single-select
+          referenced-parameters: AIR_GAP_INSTALLATION
+      - dynamic-reference:
+          name: LONGHORN_INSTALL_VERSION
+          description: "version of longhorn to be installed using manifest file or helm chart"
+          script:
+            groovy: |-
+              if (LONGHORN_INSTALL_METHOD.equals('custom')) {
+                return "<input class='setting-input jenkins-input' name='value' value='N/A' type='text' disabled style='opacity: 0.5;'>";
+              } else {
+                return "<input class='setting-input jenkins-input' name='value' value='master' type='text'>";
+              }
+            use-groovy-sandbox: false
+          choice-type: formatted-html
+          omit-value-field: True
+          referenced-parameters: LONGHORN_INSTALL_METHOD
+      - dynamic-reference:
           name: LONGHORN_MANAGER_REPO_URI
-          default: "https://github.com/longhorn/longhorn-manager.git"
           description: "longhorn-manager repo URI"
-      - string:
+          script:
+            groovy: |-
+              if (!LONGHORN_INSTALL_METHOD.equals('custom')) {
+                return "<input class='setting-input jenkins-input' name='value' value='N/A' type='text' disabled style='opacity: 0.5;'>";
+              } else {
+                return "<input class='setting-input jenkins-input' name='value' value='https://github.com/longhorn/longhorn-manager.git' type='text'>";
+              }
+            use-groovy-sandbox: false
+          choice-type: formatted-html
+          omit-value-field: True
+          referenced-parameters: LONGHORN_INSTALL_METHOD
+      - dynamic-reference:
           name: LONGHORN_MANAGER_BRANCH
-          default: "master"
           description: "longhorn-manager repo branch"
-      - string:
+          script:
+            groovy: |-
+              if (!LONGHORN_INSTALL_METHOD.equals('custom')) {
+                return "<input class='setting-input jenkins-input' name='value' value='N/A' type='text' disabled style='opacity: 0.5;'>";
+              } else {
+                return "<input class='setting-input jenkins-input' name='value' value='master' type='text'>";
+              }
+            use-groovy-sandbox: false
+          choice-type: formatted-html
+          omit-value-field: True
+          referenced-parameters: LONGHORN_INSTALL_METHOD
+      - dynamic-reference:
           name: CUSTOM_LONGHORN_MANAGER_IMAGE
-          default: "longhornio/longhorn-manager:master-head"
           description: "custom longhorn-manager image (e.g USER/longhorn-manager:testing)"
-      - string:
+          script:
+            groovy: |-
+              if (!LONGHORN_INSTALL_METHOD.equals('custom')) {
+                return "<input class='setting-input jenkins-input' name='value' value='N/A' type='text' disabled style='opacity: 0.5;'>";
+              } else {
+                return "<input class='setting-input jenkins-input' name='value' value='longhornio/longhorn-manager:master-head' type='text'>";
+              }
+            use-groovy-sandbox: false
+          choice-type: formatted-html
+          omit-value-field: True
+          referenced-parameters: LONGHORN_INSTALL_METHOD
+      - dynamic-reference:
           name: CUSTOM_LONGHORN_ENGINE_IMAGE
-          default: "longhornio/longhorn-engine:master-head"
           description: "custom longhorn-engine image (e.g USER/longhorn-engine:testing)"
-      - string:
+          script:
+            groovy: |-
+              if (!LONGHORN_INSTALL_METHOD.equals('custom')) {
+                return "<input class='setting-input jenkins-input' name='value' value='N/A' type='text' disabled style='opacity: 0.5;'>";
+              } else {
+                return "<input class='setting-input jenkins-input' name='value' value='longhornio/longhorn-engine:master-head' type='text'>";
+              }
+            use-groovy-sandbox: false
+          choice-type: formatted-html
+          omit-value-field: True
+          referenced-parameters: LONGHORN_INSTALL_METHOD
+      - dynamic-reference:
           name: CUSTOM_LONGHORN_INSTANCE_MANAGER_IMAGE
-          default: ""
           description: "custom longhorn-instance-manager image (e.g USER/longhorn-instance-manager:testing), leave blank to use the default"
-      - string:
+          script:
+            groovy: |-
+              if (!LONGHORN_INSTALL_METHOD.equals('custom')) {
+                return "<input class='setting-input jenkins-input' name='value' value='N/A' type='text' disabled style='opacity: 0.5;'>";
+              } else {
+                return "<input class='setting-input jenkins-input' name='value' value='' type='text'>";
+              }
+            use-groovy-sandbox: false
+          choice-type: formatted-html
+          omit-value-field: True
+          referenced-parameters: LONGHORN_INSTALL_METHOD
+      - dynamic-reference:
           name: CUSTOM_LONGHORN_SHARE_MANAGER_IMAGE
-          default: ""
           description: "custom longhorn-share-manager image (e.g USER/longhorn-share-manager:testing), leave blank to use the default"
-      - string:
+          script:
+            groovy: |-
+              if (!LONGHORN_INSTALL_METHOD.equals('custom')) {
+                return "<input class='setting-input jenkins-input' name='value' value='N/A' type='text' disabled style='opacity: 0.5;'>";
+              } else {
+                return "<input class='setting-input jenkins-input' name='value' value='' type='text'>";
+              }
+            use-groovy-sandbox: false
+          choice-type: formatted-html
+          omit-value-field: True
+          referenced-parameters: LONGHORN_INSTALL_METHOD
+      - dynamic-reference:
           name: CUSTOM_LONGHORN_BACKING_IMAGE_MANAGER_IMAGE
-          default: ""
           description: "custom backing-image-manager image (e.g USER/backing-image-manager:testing), leave blank to use the default"
+          script:
+            groovy: |-
+              if (!LONGHORN_INSTALL_METHOD.equals('custom')) {
+                return "<input class='setting-input jenkins-input' name='value' value='N/A' type='text' disabled style='opacity: 0.5;'>";
+              } else {
+                return "<input class='setting-input jenkins-input' name='value' value='' type='text'>";
+              }
+            use-groovy-sandbox: false
+          choice-type: formatted-html
+          omit-value-field: True
+          referenced-parameters: LONGHORN_INSTALL_METHOD
       - string:
           name: LONGHORN_TESTS_CUSTOM_IMAGE
           default: "longhornio/longhorn-manager-test:master-head"
           description: "custom longhorn-manager test image, will be used to run tests"
-      - string:
+
+      - dynamic-reference:
           name: PYTEST_CUSTOM_OPTIONS
-          default: ""
           description: "pytest custom options to run specific tests (e.g -k test_hosts)"
+          script:
+            groovy: |-
+              if (AIR_GAP_INSTALLATION) {
+                return "<input class='setting-input jenkins-input' name='value' value='test_basic.py::test_volume_basic' type='text'>";
+              } else {
+                return "<input class='setting-input jenkins-input' name='value' value='' type='text'>";
+              }
+            use-groovy-sandbox: false
+          choice-type: formatted-html
+          omit-value-field: True
+          referenced-parameters: AIR_GAP_INSTALLATION
       - string:
           name: TF_VAR_tf_workspace
           default: /src/longhorn-tests/test_framework
