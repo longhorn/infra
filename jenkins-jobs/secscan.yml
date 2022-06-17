@@ -30,5 +30,5 @@
       lightweight-checkout: true
     triggers:
       - timed: |-
-            TZ=America/Los_Angeles
+            TZ=Asia/Taipei
             H 21 * * *
