@@ -1,7 +1,7 @@
 - job:
-    name: v1.2.x-longhorn-upgrade-tests-sles-arm64
+    name: v1.3.x-longhorn-tests-sles-arm64
     project-type: pipeline
-    folder: public/v1.2.x
+    folder: public/v1.3.x
     parameters:
       - string:
           name: NOTIFY_SLACK_CHANNEL
@@ -17,15 +17,15 @@
           description: "longhorn-manager repo URI"
       - string:
           name: LONGHORN_MANAGER_BRANCH
-          default: "v1.2.x"
+          default: "v1.3.x"
           description: "longhorn-manager repo branch"
       - string:
           name: CUSTOM_LONGHORN_MANAGER_IMAGE
-          default: "longhornio/longhorn-manager:v1.2.x-head"
+          default: "longhornio/longhorn-manager:v1.3.x-head"
           description: "custom longhorn-manager image (e.g USER/longhorn-manager:testing)"
       - string:
           name: CUSTOM_LONGHORN_ENGINE_IMAGE
-          default: "longhornio/longhorn-engine:v1.2.x-head"
+          default: "longhornio/longhorn-engine:v1.3.x-head"
           description: "custom longhorn-engine image (e.g USER/longhorn-engine:testing)"
       - string:
           name: CUSTOM_LONGHORN_INSTANCE_MANAGER_IMAGE
@@ -41,7 +41,7 @@
           description: "custom backing-image-manager image (e.g USER/backing-image-manager:testing), leave blank to use the default"
       - string:
           name: LONGHORN_TESTS_CUSTOM_IMAGE
-          default: "longhornio/longhorn-manager-test:v1.2.x-head"
+          default: "longhornio/longhorn-manager-test:v1.3.x-head"
           description: "custom longhorn-manager test image, will be used to run tests"
       - string:
           name: PYTEST_CUSTOM_OPTIONS
@@ -56,11 +56,11 @@
           default: /src/longhorn-tests/test_framework
       - bool:
           name: LONGHORN_UPGRADE_TEST
-          default: true
+          default: false
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
           name: LONGHORN_STABLE_VERSION
-          default: "v1.2.3"
+          default: "v1.3.0"
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: LONGHORN_TEST_CLOUDPROVIDER
@@ -117,7 +117,7 @@
         - git:
             url: https://github.com/longhorn/longhorn-tests
             branches:
-              - v1.2.x
+              - v1.3.x
       script-path: test_framework/Jenkinsfile
       lightweight-checkout: true
     triggers:

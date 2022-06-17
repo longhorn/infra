@@ -86,3 +86,7 @@
 - job:
     name: public/v1.2.x
     project-type: folder
+
+- job:
+    name: public/v1.3.x
+    project-type: folder
