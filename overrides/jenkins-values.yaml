@@ -11,6 +11,7 @@ controller:
   - ant:1.13
   - antisamy-markup-formatter:2.7
   - apache-httpcomponents-client-4-api:4.5.13-1.0
+  - badge:1.9.1
   - blueocean-commons:1.25.3
   - blueocean-pipeline-scm-api:1.25.3
   - blueocean-rest:1.25.3
@@ -40,6 +41,7 @@ controller:
   - github-oauth:0.37
   - github:1.34.3
   - gradle:1.38
+  - groovy-postbuild:2.5
   - handlebars:3.0.8
   - jackson2-api:2.13.2-260.v43d711474c77
   - javax-activation-api:1.2.0-2
