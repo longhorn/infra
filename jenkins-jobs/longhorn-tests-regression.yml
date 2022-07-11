@@ -12,6 +12,10 @@
           name: SEND_SLACK_NOTIFICATION
           default: true
           description: "send slack notification? (default: true)"
+      - bool:
+          name: USE_HDD
+          default: false
+          description: "use HDD as Longhorn disks? (default: false)"
       - string:
           name: LONGHORN_MANAGER_REPO_URI
           default: "https://github.com/longhorn/longhorn-manager.git"
