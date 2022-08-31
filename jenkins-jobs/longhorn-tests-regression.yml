@@ -49,7 +49,7 @@
           referenced-parameters: LONGHORN_INSTALL_METHOD
       - dynamic-reference:
           name: RANCHER_CHART_GIT_REPO
-          description: "longhorn rancher chart git repo url (e.g https://github.com/innobead/charts-1.git, https://git.rancher.io/charts)"
+          description: "longhorn rancher chart git repo url (e.g https://github.com/innobead/charts-1.git, https://github.com/rancher/charts.git)"
           script:
             groovy: |-
               if (LONGHORN_INSTALL_METHOD.equals('rancher')) {
@@ -257,9 +257,12 @@
           default: "15-sp3-v20210622"
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
-             for DISTRO=ubuntu, supported values: [18.04, 20.04], default: [20.04]
-             for DISTRO=rhel, supported values: [7.9 ,8.3, 8.4.0], default: [8.3]
+             for DISTRO=ubuntu, supported values: [18.04, 20.04, 22.04], default: [20.04]
              for DISTRO=sles, supported values: [15-sp3-v20210622], default: [15-sp3-v20210622]
+             for DISTRO=rockylinux, supported values: [8.5], default: [8.5]
+             for DISTRO=rhel, supported values: [7.9 ,8.3, 8.4.0], default: [8.3]
+             for DISTRO=oracle, supported values: [8.3, 8.5], default: [8.5]
+             for DISTRO=centos, supported values: [8.4], default: [8.4]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "t2.xlarge"
