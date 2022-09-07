@@ -6,6 +6,10 @@
       - string:
           name: TF_VAR_tf_workspace
           default: /src/longhorn-tests/secscan
+      - string:
+          name: TF_VAR_LONGHORN_VERSION
+          default: "master"
+          description: "specify secscan test should be run on which longhorn branch/version (e.g v1.3.1-rc2, master, v1.2.x)"
       - extended-choice:
           name: TF_VAR_SEVERITY
           type: checkbox
