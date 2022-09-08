@@ -90,22 +90,22 @@
           omit-value-field: True
           referenced-parameters: LONGHORN_INSTALL_METHOD
       - dynamic-reference:
-          name: LONGHORN_MANAGER_REPO_URI
-          description: "longhorn-manager repo URI"
+          name: LONGHORN_REPO_URI
+          description: "longhorn repo URI"
           script:
             groovy: |-
               if (!LONGHORN_INSTALL_METHOD.equals('custom')) {
                 return "<input class='setting-input jenkins-input' name='value' value='N/A' type='text' disabled style='opacity: 0.5;'>";
               } else {
-                return "<input class='setting-input jenkins-input' name='value' value='https://github.com/longhorn/longhorn-manager.git' type='text'>";
+                return "<input class='setting-input jenkins-input' name='value' value='https://github.com/longhorn/longhorn.git' type='text'>";
               }
             use-groovy-sandbox: false
           choice-type: formatted-html
           omit-value-field: True
           referenced-parameters: LONGHORN_INSTALL_METHOD
       - dynamic-reference:
-          name: LONGHORN_MANAGER_BRANCH
-          description: "longhorn-manager repo branch"
+          name: LONGHORN_REPO_BRANCH
+          description: "longhorn repo branch"
           script:
             groovy: |-
               if (!LONGHORN_INSTALL_METHOD.equals('custom')) {
