@@ -12,13 +12,13 @@
           default: true
           description: "send slack notification? (default: true)"
       - string:
-          name: LONGHORN_MANAGER_REPO_URI
-          default: "https://github.com/longhorn/longhorn-manager.git"
-          description: "longhorn-manager repo URI"
+          name: LONGHORN_REPO_URI
+          default: "https://github.com/longhorn/longhorn.git"
+          description: "longhorn repo URI"
       - string:
-          name: LONGHORN_MANAGER_BRANCH
+          name: LONGHORN_REPO_BRANCH
           default: "master"
-          description: "longhorn-manager repo branch"
+          description: "longhorn repo branch"
       - string:
           name: CUSTOM_LONGHORN_MANAGER_IMAGE
           default: "longhornio/longhorn-manager:master-head"
