@@ -1,0 +1,29 @@
+- job:
+    concurrent: true
+    name: cleanup-resources
+    project-type: pipeline
+    folder: private
+    parameters:
+      - string:
+          name: NOTIFY_SLACK_CHANNEL
+          default: ""
+          description: "slack Channel ID to send job notification (default: T02RW4JDH)"
+      - bool:
+          name: SEND_SLACK_NOTIFICATION
+          default: false
+          description: "send slack notification? (default: false)"
+      - string:
+          name: TF_VAR_tf_workspace
+          default: /src/longhorn-tests/cleanup
+    pipeline-scm:
+      scm:
+        - git:
+            url: https://github.com/longhorn/longhorn-tests
+            branches:
+              - master
+      script-path: cleanup/Jenkinsfile
+      lightweight-checkout: true
+    triggers:
+      - timed: |-
+          TZ=Asia/Taipei
+          0 10 * * 1,4
