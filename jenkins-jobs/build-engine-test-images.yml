@@ -11,7 +11,12 @@
       - string:
           name: DOCKER_REPO
           default: "longhornio/longhorn-test"
-          description: "Docker repo for engine test images"
+          description: "Docker repo for push engine test images"
+      - string:
+          name: COMMIT_ID
+          default: ""
+          description: "Build test engine image by git clone https://github.com/longhorn/longhorn-engine.git --branch ${commit_id} --single-branch \n
+                        Empty value will means pull master-head to build test images\n"                       
     pipeline-scm:
       scm:
         - git:
@@ -20,3 +25,4 @@
               - master
       script-path: build_engine_test_images/Jenkinsfile
       lightweight-checkout: true
+
