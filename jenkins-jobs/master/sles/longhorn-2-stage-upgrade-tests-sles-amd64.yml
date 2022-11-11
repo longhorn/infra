@@ -1,7 +1,7 @@
 - job:
-    name: longhorn-upgrade-tests-sles-arm64
+    name: longhorn-upgrade-tests-sles-amd64
     project-type: pipeline
-    folder: public/master/sles/arm64
+    folder: public/master/sles/amd64
     parameters:
       - string:
           name: NOTIFY_SLACK_CHANNEL
@@ -60,8 +60,12 @@
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
           name: LONGHORN_STABLE_VERSION
-          default: "v1.3.2"
+          default: "v1.2.6"
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
+      - string:
+          name: LONGHORN_TRANSIENT_VERSION
+          default: "v1.3.2"
+          description: "transient longhorn version for 2 stage upgrade test. if provided, longhorn will first install the stable version, and then upgrade to this transient version, and finally upgrade to the version to be tested. effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: LONGHORN_TEST_CLOUDPROVIDER
           default: "aws"
@@ -76,7 +80,7 @@
           description: "aws availability zone (e.g us-east-1), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
       - string:
           name: ARCH
-          default: "arm64"
+          default: "amd64"
           description: "architecture of created instances used to run integration tests, supported values: [amd64, arm64]"
       - string:
           name: K8S_DISTRO_NAME
@@ -89,7 +93,7 @@
               kubernetes version that will be deployed
               for rke: (default: v1.22.5-rancher1-1)
               for rke2: (default: v1.25.3+rke2r1)
-              for k3s: (default: v1.25.3+k3s1)
+              for k3s: (default: v1.23.1+k3s2)
       - string:
           name: DISTRO
           default: "sles"
@@ -107,11 +111,11 @@
              for DISTRO=centos, supported values: [8.4], default: [8.4]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
-          default: "a1.xlarge"
+          default: "t2.xlarge"
           description: "aws instance type for controlplane nodes"
       - string:
           name: WORKER_INSTANCE_TYPE
-          default: "a1.xlarge"
+          default: "t2.xlarge"
           description: "aws instance type for worker nodes"
     pipeline-scm:
       scm:
