@@ -17,6 +17,10 @@
           default: true
           description: "send slack notification? (default: true)"
       - string:
+          name: LONGHORN_PREVIOUS_VERSION
+          default: ""
+          description: "used to run two different version of longhorn in the same build for comparison. if provided, benchmark test will first run on this version, and then run on the custom version, so we can compare the results based on the same set of instances."
+      - string:
           name: LONGHORN_REPO_URI
           default: "https://github.com/longhorn/longhorn.git"
           description: "longhorn repo URI"
