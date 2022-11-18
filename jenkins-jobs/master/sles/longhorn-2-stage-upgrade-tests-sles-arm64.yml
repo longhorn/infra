@@ -1,5 +1,5 @@
 - job:
-    name: longhorn-upgrade-tests-sles-arm64
+    name: longhorn-2-stage-upgrade-tests-sles-arm64
     project-type: pipeline
     folder: public/master/sles/arm64
     parameters:
