@@ -1,7 +1,7 @@
 - job:
-    name: v1.2.x-longhorn-upgrade-tests-sles-amd64
+    name: longhorn-upgrade-tests-sles-amd64
     project-type: pipeline
-    folder: public/v1.2.x
+    folder: public/master/sles/amd64
     parameters:
       - string:
           name: NOTIFY_SLACK_CHANNEL
@@ -17,15 +17,15 @@
           description: "longhorn repo URI"
       - string:
           name: LONGHORN_REPO_BRANCH
-          default: "v1.2.x"
+          default: "master"
           description: "longhorn repo branch"
       - string:
           name: CUSTOM_LONGHORN_MANAGER_IMAGE
-          default: "longhornio/longhorn-manager:v1.2.x-head"
+          default: "longhornio/longhorn-manager:master-head"
           description: "custom longhorn-manager image (e.g USER/longhorn-manager:testing)"
       - string:
           name: CUSTOM_LONGHORN_ENGINE_IMAGE
-          default: "longhornio/longhorn-engine:v1.2.x-head"
+          default: "longhornio/longhorn-engine:master-head"
           description: "custom longhorn-engine image (e.g USER/longhorn-engine:testing)"
       - string:
           name: CUSTOM_LONGHORN_INSTANCE_MANAGER_IMAGE
@@ -41,7 +41,7 @@
           description: "custom backing-image-manager image (e.g USER/backing-image-manager:testing), leave blank to use the default"
       - string:
           name: LONGHORN_TESTS_CUSTOM_IMAGE
-          default: "longhornio/longhorn-manager-test:v1.2.x-head"
+          default: "longhornio/longhorn-manager-test:master-head"
           description: "custom longhorn-manager test image, will be used to run tests"
       - string:
           name: PYTEST_CUSTOM_OPTIONS
@@ -63,6 +63,10 @@
           default: "v1.2.6"
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
+          name: LONGHORN_TRANSIENT_VERSION
+          default: "v1.3.2"
+          description: "transient longhorn version for 2 stage upgrade test. if provided, longhorn will first install the stable version, and then upgrade to this transient version, and finally upgrade to the version to be tested. effective only when LONGHORN_UPGRADE_TEST is TRUE"
+      - string:
           name: LONGHORN_TEST_CLOUDPROVIDER
           default: "aws"
           description: "cloudprovider used to run test suite, supported values:[aws]"
@@ -73,7 +77,7 @@
       - string:
           name: AWS_AVAILABILITY_ZONE
           default: "us-east-1c"
-          description: "aws availability zone (e.g us-east-1c), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
+          description: "aws availability zone (e.g us-east-1), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
       - string:
           name: ARCH
           default: "amd64"
@@ -88,6 +92,7 @@
           description: |
               kubernetes version that will be deployed
               for rke: (default: v1.22.5-rancher1-1)
+              for rke2: (default: v1.25.3+rke2r1)
               for k3s: (default: v1.23.1+k3s2)
       - string:
           name: DISTRO
@@ -95,15 +100,15 @@
           description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles, centos, oracle, rockylinux]"
       - string:
           name: DISTRO_VERSION
-          default: "15-sp3-v20210622"
+          default: "15-sp4-v20220621"
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
-             for DISTRO=ubuntu, supported values: [18.04, 20.04], default: [20.04]
-             for DISTRO=rhel, supported values: [7.9 ,8.3, 8.4.0], default: [8.3]
-             for DISTRO=sles, supported values: [15-sp3-v20210622], default: [15-sp3-v20210622]
+             for DISTRO=ubuntu, supported values: [18.04, 20.04, 22.04], default: [20.04]
+             for DISTRO=sles, supported values: [15-sp3-v20210622, 15-sp4-v20220621], default: [15-sp4-v20220621]
+             for DISTRO=rockylinux, supported values: [8.5, 8.6], default: [8.6]
+             for DISTRO=rhel, supported values: [8.4.0, 8.6.0], default: [8.6.0]
+             for DISTRO=oracle, supported values: [8.5, 8.6], default: [8.6]
              for DISTRO=centos, supported values: [8.4], default: [8.4]
-             for DISTRO=oracle, supported values: [8.3], default: [8.3]
-             for DISTRO=rockylinux, supported values: [8.4], default: [8.4]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "t2.xlarge"
@@ -117,7 +122,7 @@
         - git:
             url: https://github.com/longhorn/longhorn-tests
             branches:
-              - v1.2.x
+              - master
       script-path: test_framework/Jenkinsfile
       lightweight-checkout: true
     triggers:
