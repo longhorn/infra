@@ -57,8 +57,8 @@
           default: /src/longhorn-tests/benchmark_test
       - string:
           name: LONGHORN_TEST_CLOUDPROVIDER
-          default: "aws"
-          description: "cloudprovider used to run test suite, supported values:[aws]"
+          default: "equinix"
+          description: "cloudprovider used to run test suite, supported values:[equinix, aws]"
       - string:
           name: AWS_REGION
           default: "us-east-1"
@@ -70,42 +70,52 @@
       - string:
           name: ARCH
           default: "amd64"
-          description: "architecture of created instances used to run integration tests, supported values: [amd64]"
+          description: "architecture of created instances used to run integration tests, supported values: [amd64, arm64]"
       - string:
           name: K8S_DISTRO_NAME
           default: "rke2"
-          description: "kubernetes distro version to install [rke2, rke, k3s] (default: rke2)"
+          description: |
+              kubernetes distro to be installed [rke2, k3s]
+              for amd64, either rke2 or k3s can be used
+              for arm64, since rke2 doesn't support arm64, only k3s can be used
       - string:
           name: K8S_DISTRO_VERSION
-          default: "v1.21.4+rke2r3"
+          default: "v1.24.7+rke2r1"
           description: |
               kubernetes version that will be deployed
-              for rke2: (default: v1.21.4+rke2r3)
-              for rke: (default: v1.22.5-rancher1-1)
-              for k3s: (default: v1.23.1+k3s2)
+              for rke2: (default: v1.24.7+rke2r1)
+              for k3s: (default: v1.24.7+k3s1)
       - string:
           name: DISTRO
-          default: "sles"
-          description: "Linux distro used to install on created instances, supported values: [sles]"
+          default: "ubuntu"
+          description: |
+              linux distro used to install on created instances, supported values: [ubuntu, sles]
+              if the test is running on aws, sles can be used
+              but equinix doesn't have sles option, use ubuntu instead
       - string:
           name: DISTRO_VERSION
-          default: "15-sp4-v20220621"
+          default: "22.04"
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
-             for DISTRO=ubuntu, supported values: [18.04, 20.04, 22.04], default: [20.04]
+             for DISTRO=ubuntu, supported values: [18.04, 20.04, 22.04], default: [22.04]
              for DISTRO=sles, supported values: [15-sp3-v20210622, 15-sp4-v20220621], default: [15-sp4-v20220621]
-             for DISTRO=rockylinux, supported values: [8.5, 8.6], default: [8.6]
-             for DISTRO=rhel, supported values: [8.4.0, 8.6.0], default: [8.6.0]
-             for DISTRO=oracle, supported values: [8.5, 8.6], default: [8.6]
-             for DISTRO=centos, supported values: [8.4], default: [8.4]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
-          default: "c5d.2xlarge"
-          description: "aws instance type for controlplane nodes"
+          default: "c3.small.x86"
+          description: |
+              since benchmark test doesn't run on control plane, the architecture or the machine type doesn't matter
+              light-weight low-cost machine can be used
+              for equinix, c3.small.x86 can be used
+              for aws, t2.xlarge can be used
       - string:
           name: WORKER_INSTANCE_TYPE
-          default: "c5d.2xlarge"
-          description: "aws instance type for worker nodes"
+          default: "m3.large.x86"
+          description: |
+              select a machine type with nvme storage to run the test
+              for equinix + amd64, use m3.large.x86
+              for equinix + arm64, use c3.large.arm64
+              for aws + amd64, use c5d.2xlarge
+              for aws + arm64, use c6gd.2xlarge
       - choice:
           name: SELINUX_MODE
           choices:
