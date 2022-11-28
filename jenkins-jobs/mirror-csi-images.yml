@@ -13,9 +13,13 @@
           default: true
           description: "send slack notification? (default: true)"
       - string:
+          name: LONGHORN_IMAGES_FILE_URL
+          default: "https://raw.githubusercontent.com/longhorn/longhorn/master/deploy/longhorn-images.txt"
+          description: "sync csi images with longhorn-images.txt in longhorn repository"
+      - string:
           name: CSI_IMAGES
-          default: "csi-attacher:v3.2.1"
-          description: "CSI_IMAGE_NAME:TAG (multiple values can be supplied by separated with commas. e.g CSI_IMAGE_NAME1:TAG1,CSI_IMAGE_NAME2:TAG2)"
+          default: ""
+          description: "or mirror specific version of csi image. multiple values can be supplied by separated with commas. e.g csi-resizer:v1.3.0,csi-attacher:v3.4.0. effective only when LONGHORN_IMAGES_FILE_URL is empty"
       - string:
           name: TF_VAR_tf_workspace
           default: /src/longhorn-tests/mirror_csi_images
