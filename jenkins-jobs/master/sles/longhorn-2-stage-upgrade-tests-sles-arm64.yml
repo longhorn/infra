@@ -85,15 +85,14 @@
       - string:
           name: K8S_DISTRO_NAME
           default: "k3s"
-          description: "kubernetes distro version to install [rke, k3s] (default: k3s)"
+          description: "kubernetes distro version to install [rke2, k3s] (default: k3s)"
       - string:
           name: K8S_DISTRO_VERSION
-          default: "v1.23.1+k3s2"
+          default: "v1.24.8+k3s1"
           description: |
               kubernetes version that will be deployed
-              for rke: (default: v1.22.5-rancher1-1)
-              for rke2: (default: v1.25.3+rke2r1)
-              for k3s: (default: v1.23.1+k3s2)
+              for rke2: (default: v1.24.8+rke2r1)
+              for k3s: (default: v1.24.8+k3s1)
       - string:
           name: DISTRO
           default: "sles"
@@ -103,7 +102,7 @@
           default: "15-sp4-v20220621"
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
-             for DISTRO=ubuntu, supported values: [18.04, 20.04, 22.04], default: [20.04]
+             for DISTRO=ubuntu, supported values: [18.04, 20.04, 22.04], default: [22.04]
              for DISTRO=sles, supported values: [15-sp3-v20210622, 15-sp4-v20220621], default: [15-sp4-v20220621]
              for DISTRO=rockylinux, supported values: [8.5, 8.6], default: [8.6]
              for DISTRO=rhel, supported values: [8.4.0, 8.6.0], default: [8.6.0]
