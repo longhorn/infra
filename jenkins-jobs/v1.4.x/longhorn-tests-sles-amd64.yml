@@ -1,0 +1,128 @@
+- job:
+    name: v1.4.x-longhorn-tests-sles-amd64
+    project-type: pipeline
+    folder: public/v1.4.x
+    parameters:
+      - string:
+          name: NOTIFY_SLACK_CHANNEL
+          default: ""
+          description: "slack Channel ID to send job notification (default: T02RW4JDH)"
+      - bool:
+          name: SEND_SLACK_NOTIFICATION
+          default: true
+          description: "send slack notification? (default: true)"
+      - string:
+          name: LONGHORN_REPO_URI
+          default: "https://github.com/longhorn/longhorn.git"
+          description: "longhorn repo URI"
+      - string:
+          name: LONGHORN_REPO_BRANCH
+          default: "v1.4.x"
+          description: "longhorn repo branch"
+      - string:
+          name: CUSTOM_LONGHORN_MANAGER_IMAGE
+          default: "longhornio/longhorn-manager:v1.4.x-head"
+          description: "custom longhorn-manager image (e.g USER/longhorn-manager:testing)"
+      - string:
+          name: CUSTOM_LONGHORN_ENGINE_IMAGE
+          default: "longhornio/longhorn-engine:v1.4.x-head"
+          description: "custom longhorn-engine image (e.g USER/longhorn-engine:testing)"
+      - string:
+          name: CUSTOM_LONGHORN_INSTANCE_MANAGER_IMAGE
+          default: "longhornio/longhorn-instance-manager:v1.4.x-head"
+          description: "custom longhorn-instance-manager image (e.g USER/longhorn-instance-manager:testing), leave blank to use the default"
+      - string:
+          name: CUSTOM_LONGHORN_SHARE_MANAGER_IMAGE
+          default: "longhornio/longhorn-share-manager:v1.4.x-head"
+          description: "custom longhorn-share-manager image (e.g USER/longhorn-share-manager:testing), leave blank to use the default"
+      - string:
+          name: CUSTOM_LONGHORN_BACKING_IMAGE_MANAGER_IMAGE
+          default: "longhornio/backing-image-manager:v1.4.x-head"
+          description: "custom backing-image-manager image (e.g USER/backing-image-manager:testing), leave blank to use the default"
+      - string:
+          name: LONGHORN_TESTS_CUSTOM_IMAGE
+          default: "longhornio/longhorn-manager-test:v1.4.x-head"
+          description: "custom longhorn-manager test image, will be used to run tests"
+      - string:
+          name: PYTEST_CUSTOM_OPTIONS
+          default: ""
+          description: "pytest custom options to run specific tests (e.g -k test_hosts)"
+      - string:
+          name: BACKUP_STORE_TYPE
+          default: "nfs-and-s3"
+          description: "The valid values for this field are 'nfs', 's3' and 'nfs-and-s3'"
+      - string:
+          name: TF_VAR_tf_workspace
+          default: /src/longhorn-tests/test_framework
+      - bool:
+          name: LONGHORN_UPGRADE_TEST
+          default: false
+          description: "run longhorn upgrade test, then run longhorn test suite"
+      - string:
+          name: LONGHORN_STABLE_VERSION
+          default: "v1.4.0"
+          description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
+      - string:
+          name: LONGHORN_TEST_CLOUDPROVIDER
+          default: "aws"
+          description: "cloudprovider used to run test suite, supported values:[aws]"
+      - string:
+          name: AWS_REGION
+          default: "us-east-1"
+          description: "aws region (e.g us-east-1), effective only when using aws as cloudprovider"
+      - string:
+          name: AWS_AVAILABILITY_ZONE
+          default: "us-east-1c"
+          description: "aws availability zone (e.g us-east-1c), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
+      - string:
+          name: ARCH
+          default: "amd64"
+          description: "architecture of created instances used to run integration tests, supported values: [amd64, arm64]"
+      - string:
+          name: K8S_DISTRO_NAME
+          default: "k3s"
+          description: "kubernetes distro version to install [rke, k3s] (default: k3s)"
+      - string:
+          name: K8S_DISTRO_VERSION
+          default: "v1.25.3+k3s1"
+          description: |
+              kubernetes version that will be deployed
+              for rke2: (default: v1.25.3+rke2r1)
+              for k3s: (default: v1.25.3+k3s1)
+      - string:
+          name: DISTRO
+          default: "sles"
+          description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles, centos, oracle, rockylinux]"
+      - string:
+          name: DISTRO_VERSION
+          default: "15-sp4-v20220621"
+          description: |
+             Linux distro version to install on created instances, choosed based on DISTRO values
+             for DISTRO=ubuntu, supported values: [18.04, 20.04, 22.04], default: [20.04]
+             for DISTRO=sles, supported values: [15-sp3-v20210622, 15-sp4-v20220621], default: [15-sp4-v20220621]
+             for DISTRO=rockylinux, supported values: [8.5, 8.6], default: [8.6]
+             for DISTRO=rhel, supported values: [8.4.0, 8.6.0], default: [8.6.0]
+             for DISTRO=oracle, supported values: [8.5, 8.6], default: [8.6]
+             for DISTRO=centos, supported values: [8.4], default: [8.4]
+      - string:
+          name: CONTROLPLANE_INSTANCE_TYPE
+          default: "t2.xlarge"
+          description: "aws instance type for controlplane nodes"
+      - string:
+          name: WORKER_INSTANCE_TYPE
+          default: "t2.xlarge"
+          description: "aws instance type for worker nodes"
+    pipeline-scm:
+      scm:
+        - git:
+            url: https://github.com/longhorn/longhorn-tests
+            branches:
+              - v1.4.x
+      script-path: test_framework/Jenkinsfile
+      lightweight-checkout: true
+    triggers:
+      - parameterized-timer:
+          cron: |
+            TZ=Asia/Taipei
+            H 21 * * 0,1,3,5 % BACKUP_STORE_TYPE=s3
+            H 21 * * 2,4,6 % BACKUP_STORE_TYPE=nfs
