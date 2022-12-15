@@ -26,4 +26,4 @@
     triggers:
       - timed: |-
           TZ=Asia/Taipei
-          0 10 * * 1,4
+          0 10 * * *
