@@ -280,7 +280,7 @@
           choices:
           - ""
           - permissive
-          - enfrocing
+          - enforcing
           description: "SELINUX mode [permissive | enforcing] (available only for CentOS and RedHat)"
     pipeline-scm:
       scm:

@@ -95,12 +95,12 @@
           description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles, centos, oracle, rockylinux]" 
       - string:
           name: DISTRO_VERSION
-          default: "8.3"
+          default: "8.6.0"
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
-             for DISTRO=ubuntu, supported values: [18.04, 20.04], default: [20.04]
-             for DISTRO=rhel, supported values: [7.9 ,8.3, 8.4.0], default: [8.3]
-             for DISTRO=sles, supported values: [15-sp3-v20210622], default: [15-sp3-v20210622]
+             for DISTRO=ubuntu, supported values: [18.04, 20.04, 22.04], default: [20.04]
+             for DISTRO=rhel, supported values: [8.4.0, 8.6.0], default: [8.6.0]
+             for DISTRO=sles, supported values: [15-sp3-v20210622, 15-sp4-v20220621], default: [15-sp4-v20220621]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "a1.xlarge"
@@ -113,7 +113,7 @@
           name: SELINUX_MODE
           choices:
           - permissive
-          - enfrocing
+          - enforcing
           description: "SELINUX mode [permissive | enforcing] (available only for CentOS and RedHat)  default: permissive"
     pipeline-scm:
       scm:
