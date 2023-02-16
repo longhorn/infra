@@ -25,4 +25,9 @@
               - master
       script-path: build_engine_test_images/Jenkinsfile
       lightweight-checkout: true
+    triggers:
+      - parameterized-timer:
+          cron: |
+            TZ=Asia/Taipei
+            0 18 * * 0
 
