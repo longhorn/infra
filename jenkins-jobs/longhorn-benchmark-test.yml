@@ -98,7 +98,7 @@
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
              for DISTRO=ubuntu, supported values: [18.04, 20.04, 22.04], default: [22.04]
-             for DISTRO=sles, supported values: [15-sp3-v20210622, 15-sp4-v20220621], default: [15-sp4-v20220621]
+             for DISTRO=sles, supported values: [15-sp3, 15-sp4], default: [15-sp4]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "c3.small.x86"
