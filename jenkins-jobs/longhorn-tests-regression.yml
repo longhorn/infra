@@ -235,7 +235,7 @@
           description: "aws region (e.g us-east-1), effective only when using aws as cloudprovider"
       - string:
           name: AWS_AVAILABILITY_ZONE
-          default: "us-east-1c"
+          default: "us-east-1a"
           description: "aws availability zone (e.g us-east-1c), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
       - string:
           name: ARCH
