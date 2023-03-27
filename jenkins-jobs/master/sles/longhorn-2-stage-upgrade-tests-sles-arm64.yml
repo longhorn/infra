@@ -128,5 +128,5 @@
       - parameterized-timer:
           cron: |
             TZ=Asia/Taipei
-            H 21 * * 0,1,3,5 % BACKUP_STORE_TYPE=s3
-            H 21 * * 2,4,6 % BACKUP_STORE_TYPE=nfs
+            H 19 * * 0,1,3,5 % BACKUP_STORE_TYPE=s3
+            H 19 * * 2,4,6 % BACKUP_STORE_TYPE=nfs
