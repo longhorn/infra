@@ -92,7 +92,7 @@
       - string:
           name: DISTRO
           default: "sles"
-          description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles, centos, oracle, rockylinux]"
+          description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles, centos, oracle, rockylinux, sle-micro]"
       - string:
           name: DISTRO_VERSION
           default: "15-sp4"
@@ -104,6 +104,7 @@
              for DISTRO=rhel, supported values: [8.4.0, 8.6.0], default: [8.6.0]
              for DISTRO=oracle, supported values: [8.5, 8.6], default: [8.6]
              for DISTRO=centos, supported values: [8.4], default: [8.4]
+             for DISTRO=sle-micro, supported values: [5.3], default: [5.3]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "a1.xlarge"

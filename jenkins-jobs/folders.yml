@@ -74,6 +74,18 @@
     name: public/master/rockylinux/arm64
     project-type: folder
 
+- job:
+    name: public/master/sle-micro
+    project-type: folder
+
+- job:
+    name: public/master/sle-micro/amd64
+    project-type: folder
+
+- job:
+    name: public/master/sle-micro/arm64
+    project-type: folder
+
 
 - job:
     name: private
