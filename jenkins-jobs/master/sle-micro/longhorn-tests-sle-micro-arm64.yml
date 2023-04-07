@@ -1,7 +1,7 @@
 - job:
-    name: longhorn-upgrade-tests-sles-amd64
+    name: longhorn-tests-sle-micro-arm64
     project-type: pipeline
-    folder: public/master/sles/amd64
+    folder: public/master/sle-micro/arm64
     parameters:
       - string:
           name: NOTIFY_SLACK_CHANNEL
@@ -56,7 +56,7 @@
           default: /src/longhorn-tests/test_framework
       - bool:
           name: LONGHORN_UPGRADE_TEST
-          default: true
+          default: false
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
           name: LONGHORN_STABLE_VERSION
@@ -76,7 +76,7 @@
           description: "aws availability zone (e.g us-east-1), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
       - string:
           name: ARCH
-          default: "amd64"
+          default: "arm64"
           description: "architecture of created instances used to run integration tests, supported values: [amd64, arm64]"
       - string:
           name: K8S_DISTRO_NAME
@@ -84,18 +84,18 @@
           description: "kubernetes distro version to install [rke2, k3s] (default: k3s)"
       - string:
           name: K8S_DISTRO_VERSION
-          default: "v1.24.8+k3s1"
+          default: "v1.25.3+k3s1"
           description: |
               kubernetes version that will be deployed
-              for rke2: (default: v1.24.8+rke2r1)
-              for k3s: (default: v1.24.8+k3s1)
+              for rke2: (default: v1.25.3+rke2r1)
+              for k3s: (default: v1.25.3+k3s1)
       - string:
           name: DISTRO
-          default: "sles"
+          default: "sle-micro"
           description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles, centos, oracle, rockylinux, sle-micro]"
       - string:
           name: DISTRO_VERSION
-          default: "15-sp4"
+          default: "5.3"
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
              for DISTRO=ubuntu, supported values: [18.04, 20.04, 22.04], default: [22.04]
@@ -107,11 +107,11 @@
              for DISTRO=sle-micro, supported values: [5.3], default: [5.3]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
-          default: "t2.xlarge"
+          default: "a1.xlarge"
           description: "aws instance type for controlplane nodes"
       - string:
           name: WORKER_INSTANCE_TYPE
-          default: "t2.xlarge"
+          default: "a1.xlarge"
           description: "aws instance type for worker nodes"
     pipeline-scm:
       scm:
@@ -121,9 +121,3 @@
               - master
       script-path: test_framework/Jenkinsfile
       lightweight-checkout: true
-    triggers:
-      - parameterized-timer:
-          cron: |
-            TZ=Asia/Taipei
-            H 19 * * 0,1,3,5 % BACKUP_STORE_TYPE=s3;LONGHORN_STABLE_VERSION=v1.2.6
-            H 19 * * 2,4,6 % BACKUP_STORE_TYPE=nfs;LONGHORN_STABLE_VERSION=v1.3.2
