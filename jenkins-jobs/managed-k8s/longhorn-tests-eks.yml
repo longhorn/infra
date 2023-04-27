@@ -1,0 +1,114 @@
+- job:
+    name: longhorn-tests-eks
+    project-type: pipeline
+    folder: private/managed-k8s
+    parameters:
+      - string:
+          name: NOTIFY_SLACK_CHANNEL
+          default: ""
+          description: "slack Channel ID to send job notification (default: T02RW4JDH)"
+      - bool:
+          name: SEND_SLACK_NOTIFICATION
+          default: true
+          description: "send slack notification? (default: true)"
+      - string:
+          name: LONGHORN_REPO_URI
+          default: "https://github.com/longhorn/longhorn.git"
+          description: "longhorn repo URI"
+      - string:
+          name: LONGHORN_REPO_BRANCH
+          default: "master"
+          description: "longhorn repo branch"
+      - string:
+          name: CUSTOM_LONGHORN_MANAGER_IMAGE
+          default: "longhornio/longhorn-manager:master-head"
+          description: "custom longhorn-manager image (e.g USER/longhorn-manager:testing)"
+      - string:
+          name: CUSTOM_LONGHORN_ENGINE_IMAGE
+          default: "longhornio/longhorn-engine:master-head"
+          description: "custom longhorn-engine image (e.g USER/longhorn-engine:testing)"
+      - string:
+          name: CUSTOM_LONGHORN_INSTANCE_MANAGER_IMAGE
+          default: ""
+          description: "custom longhorn-instance-manager image (e.g USER/longhorn-instance-manager:testing), leave blank to use the default"
+      - string:
+          name: CUSTOM_LONGHORN_SHARE_MANAGER_IMAGE
+          default: ""
+          description: "custom longhorn-share-manager image (e.g USER/longhorn-share-manager:testing), leave blank to use the default"
+      - string:
+          name: CUSTOM_LONGHORN_BACKING_IMAGE_MANAGER_IMAGE
+          default: ""
+          description: "custom backing-image-manager image (e.g USER/backing-image-manager:testing), leave blank to use the default"
+      - string:
+          name: LONGHORN_TESTS_CUSTOM_IMAGE
+          default: "longhornio/longhorn-manager-test:master-head"
+          description: "custom longhorn-manager test image, will be used to run tests"
+      - string:
+          name: PYTEST_CUSTOM_OPTIONS
+          default: ""
+          description: "pytest custom options to run specific tests (e.g -k test_hosts)"
+      - string:
+          name: BACKUP_STORE_TYPE
+          default: "nfs-and-s3"
+          description: "The valid values for this field are 'nfs', 's3' and 'nfs-and-s3'"
+      - string:
+          name: TF_VAR_tf_workspace
+          default: /src/longhorn-tests/test_framework
+      - bool:
+          name: LONGHORN_UPGRADE_TEST
+          default: false
+          description: "run longhorn upgrade test, then run longhorn test suite"
+      - string:
+          name: LONGHORN_STABLE_VERSION
+          default: "v1.3.2"
+          description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
+      - string:
+          name: LONGHORN_TEST_CLOUDPROVIDER
+          default: "aws"
+          description: "cloudprovider used to run test suite, supported values:[aws]"
+      - string:
+          name: AWS_REGION
+          default: "us-east-1"
+          description: "aws region (e.g us-east-1), effective only when using aws as cloudprovider"
+      - string:
+          name: AWS_AVAILABILITY_ZONE
+          default: "N/A"
+          description: "not applicable for eks"
+      - string:
+          name: ARCH
+          default: "amd64"
+          description: "architecture of created instances used to run integration tests, supported values: [amd64, arm64]"
+      - string:
+          name: K8S_DISTRO_NAME
+          default: "eks"
+          description: "kubernetes distro version [eks] (default: eks)"
+      - string:
+          name: K8S_DISTRO_VERSION
+          default: "N/A"
+          description: |
+              kubernetes version that will be deployed
+              currently only support latest version for eks
+      - string:
+          name: DISTRO
+          default: "N/A"
+          description: "not applicable for eks"
+      - string:
+          name: DISTRO_VERSION
+          default: "N/A"
+          description: "not applicable for eks"
+      - string:
+          name: CONTROLPLANE_INSTANCE_TYPE
+          default: "N/A"
+          description: "not applicable for eks"
+      - string:
+          name: WORKER_INSTANCE_TYPE
+          default: "N/A"
+          description: "not applicable for eks"
+    pipeline-scm:
+      scm:
+        - git:
+            url: https://github.com/longhorn/longhorn-tests
+            branches:
+              - master
+      script-path: test_framework/Jenkinsfile
+      lightweight-checkout: true

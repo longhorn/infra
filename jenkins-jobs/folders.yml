@@ -92,6 +92,10 @@
     project-type: folder
 
 - job:
+    name: private/managed-k8s
+    project-type: folder
+
+- job:
     name: public/v1.1.x
     project-type: folder
 
