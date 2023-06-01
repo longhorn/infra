@@ -53,7 +53,7 @@
           description: "The valid values for this field are 'nfs', 's3' and 'nfs-and-s3'"
       - string:
           name: TF_VAR_tf_workspace
-          default: /src/longhorn-tests/test_framework
+          default: /src/longhorn-tests/pipelines/gke
       - bool:
           name: LONGHORN_UPGRADE_TEST
           default: false
@@ -62,53 +62,11 @@
           name: LONGHORN_STABLE_VERSION
           default: "v1.3.2"
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
-      - string:
-          name: LONGHORN_TEST_CLOUDPROVIDER
-          default: "gcp"
-          description: "cloudprovider used to run test suite, supported values:[gcp]"
-      - string:
-          name: AWS_REGION
-          default: "N/A"
-          description: "not applicable for gke"
-      - string:
-          name: AWS_AVAILABILITY_ZONE
-          default: "N/A"
-          description: "not applicable for gke"
-      - string:
-          name: ARCH
-          default: "amd64"
-          description: "architecture of created instances used to run integration tests, supported values: [amd64]"
-      - string:
-          name: K8S_DISTRO_NAME
-          default: "gke"
-          description: "kubernetes distro version [gke] (default: gke)"
-      - string:
-          name: K8S_DISTRO_VERSION
-          default: "N/A"
-          description: |
-              kubernetes version that will be deployed
-              currently only support latest version for gke
-      - string:
-          name: DISTRO
-          default: "N/A"
-          description: "not applicable for gke"
-      - string:
-          name: DISTRO_VERSION
-          default: "N/A"
-          description: "not applicable for gke"
-      - string:
-          name: CONTROLPLANE_INSTANCE_TYPE
-          default: "N/A"
-          description: "not applicable for gke"
-      - string:
-          name: WORKER_INSTANCE_TYPE
-          default: "N/A"
-          description: "not applicable for gke"
     pipeline-scm:
       scm:
         - git:
             url: https://github.com/longhorn/longhorn-tests
             branches:
               - master
-      script-path: test_framework/Jenkinsfile
+      script-path: pipelines/gke/Jenkinsfile
       lightweight-checkout: true
