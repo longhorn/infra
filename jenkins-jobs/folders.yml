@@ -110,3 +110,7 @@
 - job:
     name: public/v1.4.x
     project-type: folder
+
+- job:
+    name: public/v1.5.x
+    project-type: folder
