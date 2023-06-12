@@ -103,7 +103,7 @@
              for DISTRO=sles, supported values: [15-sp3-v20210622, 15-sp4-v20220621], default: [15-sp4-v20220621]
              for DISTRO=centos, supported values: [8.4], default: [8.4]
              for DISTRO=oracle, supported values: [8.5, 8.6], default: [8.6]
-             for DISTRO=rockylinux, supported values: [8.5, 8.6], default: [8.6]
+             for DISTRO=rockylinux, supported values: [8.8, 9.2], default: [9.2]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "a1.xlarge"
