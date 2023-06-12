@@ -87,7 +87,7 @@
           default: "v1.27.1+k3s1"
           description: |
               kubernetes version that will be deployed
-              for rke2: (default: v1.27.1+rke2r1)
+              for rke2: (default: v1.27.2+rke2r1)
               for k3s: (default: v1.27.1+k3s1)
       - string:
           name: DISTRO
