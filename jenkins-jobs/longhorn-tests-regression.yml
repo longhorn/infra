@@ -219,7 +219,7 @@
           description: "The valid values for this field are 'nfs', 's3' and 'nfs-and-s3'"
       - string:
           name: LONGHORN_STABLE_VERSION
-          default: "v1.3.2"
+          default: "v1.4.2"
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: LONGHORN_TRANSIENT_VERSION
@@ -261,12 +261,11 @@
           default: "15-sp4"
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
-             for DISTRO=ubuntu, supported values: [18.04, 20.04, 22.04], default: [22.04]
-             for DISTRO=sles, supported values: [15-sp3, 15-sp4], default: [15-sp4]
-             for DISTRO=rockylinux, supported values: [8.8, 9.2], default: [9.2]
-             for DISTRO=rhel, supported values: [8.4.0, 8.6.0], default: [8.6.0]
-             for DISTRO=oracle, supported values: [8.5, 8.6], default: [8.6]
-             for DISTRO=centos, supported values: [8.4], default: [8.4]
+             for DISTRO=ubuntu, supported values: [22.04], default: [22.04]
+             for DISTRO=sles, supported values: [15-sp4], default: [15-sp4]
+             for DISTRO=rockylinux, supported values: [9.2], default: [9.2]
+             for DISTRO=rhel, supported values: [9.1.0], default: [9.1.0]
+             for DISTRO=oracle, supported values: [9.1], default: [9.1]
              for DISTRO=sle-micro, supported values: [5.3], default: [5.3]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
@@ -279,10 +278,9 @@
       - choice:
           name: SELINUX_MODE
           choices:
-          - ""
           - permissive
           - enforcing
-          description: "SELINUX mode [permissive | enforcing] (available only for CentOS and RedHat)"
+          description: "SELINUX mode [permissive | enforcing] (available only for Rockylinux and RHEL)  default: permissive"
     pipeline-scm:
       scm:
         - git:
