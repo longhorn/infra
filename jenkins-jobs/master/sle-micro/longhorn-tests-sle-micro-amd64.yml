@@ -60,7 +60,7 @@
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
           name: LONGHORN_STABLE_VERSION
-          default: "v1.3.2"
+          default: "v1.4.2"
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: LONGHORN_TEST_CLOUDPROVIDER
@@ -84,11 +84,11 @@
           description: "kubernetes distro version to install [rke2, k3s] (default: k3s)"
       - string:
           name: K8S_DISTRO_VERSION
-          default: "v1.25.3+k3s1"
+          default: "v1.27.1+k3s1"
           description: |
               kubernetes version that will be deployed
-              for rke2: (default: v1.25.3+rke2r1)
-              for k3s: (default: v1.25.3+k3s1)
+              for rke2: (default: v1.27.2+rke2r1)
+              for k3s: (default: v1.27.1+k3s1)
       - string:
           name: DISTRO
           default: "sle-micro"
@@ -98,12 +98,6 @@
           default: "5.3"
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
-             for DISTRO=ubuntu, supported values: [18.04, 20.04, 22.04], default: [22.04]
-             for DISTRO=sles, supported values: [15-sp3, 15-sp4], default: [15-sp4]
-             for DISTRO=rockylinux, supported values: [8.8, 9.2], default: [9.2]
-             for DISTRO=rhel, supported values: [8.4.0, 8.6.0], default: [8.6.0]
-             for DISTRO=oracle, supported values: [8.5, 8.6], default: [8.6]
-             for DISTRO=centos, supported values: [8.4], default: [8.4]
              for DISTRO=sle-micro, supported values: [5.3], default: [5.3]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE

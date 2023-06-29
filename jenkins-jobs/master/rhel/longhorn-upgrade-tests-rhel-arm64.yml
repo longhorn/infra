@@ -60,7 +60,7 @@
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
           name: LONGHORN_STABLE_VERSION
-          default: "v1.2.2"
+          default: "v1.4.2"
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: LONGHORN_TEST_CLOUDPROVIDER
@@ -81,26 +81,24 @@
       - string:
           name: K8S_DISTRO_NAME
           default: "k3s"
-          description: "kubernetes distro version to install [rke, k3s] (default: k3s)"
+          description: "kubernetes distro version to install [rke2, k3s] (default: k3s)"
       - string:
           name: K8S_DISTRO_VERSION
-          default: "v1.23.1+k3s2"
+          default: "v1.27.1+k3s1"
           description: |
               kubernetes version that will be deployed
-              for rke: (default: v1.22.5-rancher1-1)
-              for k3s: (default: v1.23.1+k3s2)
+              for rke2: (default: v1.27.2+rke2r1)
+              for k3s: (default: v1.27.1+k3s1)
       - string:
           name: DISTRO
           default: "rhel"
           description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles, centos, oracle, rockylinux]"
       - string:
           name: DISTRO_VERSION
-          default: "8.6.0"
+          default: "9.1.0"
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
-             for DISTRO=ubuntu, supported values: [18.04, 20.04, 22.04], default: [20.04]
-             for DISTRO=rhel, supported values: [8.4.0, 8.6.0], default: [8.6.0]
-             for DISTRO=sles, supported values: [15-sp3-v20210622, 15-sp4-v20220621], default: [15-sp4-v20220621]
+             for DISTRO=rhel, supported values: [9.1.0], default: [9.1.0]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "a1.xlarge"
@@ -114,7 +112,7 @@
           choices:
           - permissive
           - enforcing
-          description: "SELINUX mode [permissive | enforcing] (available only for CentOS and RedHat)  default: permissive"
+          description: "SELINUX mode [permissive | enforcing] (available only for Rockylinux and RHEL)  default: permissive"
     pipeline-scm:
       scm:
         - git:
