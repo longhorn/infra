@@ -101,11 +101,11 @@
              for DISTRO=sles, supported values: [15-sp4], default: [15-sp4]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
-          default: "a1.xlarge"
+          default: "a1.2xlarge"
           description: "aws instance type for controlplane nodes"
       - string:
           name: WORKER_INSTANCE_TYPE
-          default: "a1.xlarge"
+          default: "a1.2xlarge"
           description: "aws instance type for worker nodes"
     pipeline-scm:
       scm:
