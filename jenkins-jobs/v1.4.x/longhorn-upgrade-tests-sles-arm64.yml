@@ -63,6 +63,10 @@
           default: "v1.4.2"
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
+          name: LONGHORN_TRANSIENT_VERSION
+          default: ""
+          description: "transient longhorn version for 2 stage upgrade test. if provided, longhorn will first install the stable version, and then upgrade to this transient version, and finally upgrade to the version to be tested. effective only when LONGHORN_UPGRADE_TEST is TRUE"
+      - string:
           name: LONGHORN_TEST_CLOUDPROVIDER
           default: "aws"
           description: "cloudprovider used to run test suite, supported values:[aws]"
@@ -106,11 +110,11 @@
              for DISTRO=centos, supported values: [8.4], default: [8.4]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
-          default: "a1.xlarge"
+          default: "a1.2xlarge"
           description: "aws instance type for controlplane nodes"
       - string:
           name: WORKER_INSTANCE_TYPE
-          default: "a1.xlarge"
+          default: "a1.2xlarge"
           description: "aws instance type for worker nodes"
     pipeline-scm:
       scm:
