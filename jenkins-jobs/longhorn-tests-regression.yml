@@ -281,6 +281,10 @@
           - permissive
           - enforcing
           description: "SELINUX mode [permissive | enforcing] (available only for Rockylinux and RHEL)  default: permissive"
+      - bool:
+          name: CIS_HARDENING
+          default: false
+          description: "setup cis-1.23 hardened environment. effective only when rke2 version > v1.25 and distro = sles"
     pipeline-scm:
       scm:
         - git:
