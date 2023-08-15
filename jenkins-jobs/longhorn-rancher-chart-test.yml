@@ -12,6 +12,10 @@
           default: true
           description: "send slack notification? (default: true)"
       - string:
+          name: RANCHER_VERSION
+          default: ""
+          description: "if empty, latest version will be installed"
+      - string:
           name: RANCHER_CHART_REPO_URI
           default: ""
           description: "rancher chart repo URI"
@@ -19,6 +23,12 @@
           name: RANCHER_CHART_REPO_BRANCH
           default: ""
           description: "rancher chart repo branch"
+      - choice:
+          name: LONGHORN_REPO
+          choices:
+            - rancher
+            - longhornio
+          description: "dockerhub repo of longhorn components"
       - string:
           name: LONGHORN_INSTALL_VERSION
           default: "102.3.0+up1.5.1"
