@@ -2,10 +2,10 @@ envFromSecret: grafana-secret
 persistence:
   type: pvc
   enabled: true
-  existingClaim: grafana
+  existingClaim: grafana-v2
 grafana.ini:
   server:
-    domain: https://metrics.longhorn.io
+    domain: metrics.longhorn.io
     root_url: https://metrics.longhorn.io
   auth.github:
     enabled: true
@@ -23,24 +23,25 @@ grafana.ini:
     org_name: "longhorn-public"
     org_role: "Viewer"
 ingress:
-    enabled: true
-    apiVersion: "networking.k8s.io/v1beta1"
-    annotations:
-      kubernetes.io/ingress.class: nginx
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-      nginx.ingress.kubernetes.io/secure-backends: "true"
-    hosts:
-      - metrics.longhorn.io
-    tls:
+  enabled: true
+  apiVersion: "networking.k8s.io/v1beta1"
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/secure-backends: "true"
+  hosts:
+    - metrics.longhorn.io
+  path: /
+  tls:
     - secretName: metrics.longhorn.io
       hosts:
-      - metrics.longhorn.io
+        - metrics.longhorn.io
 affinity:
   nodeAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
       nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/arch
-          operator: In
-          values:
-          - amd64
+        - matchExpressions:
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+                - amd64
