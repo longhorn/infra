@@ -2,6 +2,9 @@
     name: longhorn-helm-chart-test
     project-type: pipeline
     folder: private
+    properties:
+      - build-discarder:
+          days-to-keep: 180
     parameters:
       - bool:
           name: SEND_SLACK_NOTIFICATION

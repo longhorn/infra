@@ -2,6 +2,9 @@
     name: image-security-scan
     project-type: pipeline
     folder: private
+    properties:
+      - build-discarder:
+          days-to-keep: 180
     parameters:
       - string:
           name: TF_VAR_tf_workspace

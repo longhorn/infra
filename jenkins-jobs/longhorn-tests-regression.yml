@@ -3,6 +3,9 @@
     name: longhorn-tests-regression
     project-type: pipeline
     folder: private
+    properties:
+      - build-discarder:
+          num-to-keep: 300
     parameters:
       - bool:
           name: SEND_SLACK_NOTIFICATION
