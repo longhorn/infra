@@ -2,6 +2,9 @@
     name: longhorn-upgrade-tests-oracle-amd64
     project-type: pipeline
     folder: public/master/oracle/amd64
+    properties:
+      - build-discarder:
+          days-to-keep: 180
     parameters:
       - string:
           name: NOTIFY_SLACK_CHANNEL

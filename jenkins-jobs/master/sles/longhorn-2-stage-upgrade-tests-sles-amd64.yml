@@ -2,6 +2,9 @@
     name: longhorn-2-stage-upgrade-tests-sles-amd64
     project-type: pipeline
     folder: public/master/sles/amd64
+    properties:
+      - build-discarder:
+          days-to-keep: 180
     parameters:
       - string:
           name: NOTIFY_SLACK_CHANNEL

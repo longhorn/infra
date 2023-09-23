@@ -3,6 +3,9 @@
     name: mirror-csi-images
     project-type: pipeline
     folder: private
+    properties:
+      - build-discarder:
+          days-to-keep: 180
     parameters:
       - string:
           name: NOTIFY_SLACK_CHANNEL

@@ -2,6 +2,9 @@
     name: v1.4.x-longhorn-tests-sles-arm64
     project-type: pipeline
     folder: public/v1.4.x
+    properties:
+      - build-discarder:
+          days-to-keep: 180
     parameters:
       - string:
           name: NOTIFY_SLACK_CHANNEL
