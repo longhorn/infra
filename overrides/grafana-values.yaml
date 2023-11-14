@@ -24,6 +24,7 @@ grafana.ini:
     org_role: "Viewer"
 ingress:
   enabled: true
+  ingressClassName: nginx
   apiVersion: "networking.k8s.io/v1beta1"
   annotations:
     kubernetes.io/ingress.class: nginx
