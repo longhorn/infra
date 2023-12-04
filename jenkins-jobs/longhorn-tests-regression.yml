@@ -288,6 +288,10 @@
           name: CIS_HARDENING
           default: false
           description: "setup cis-1.23 hardened environment. effective only when rke2 version > v1.25 and distro = sles"
+      - string:
+          name: CUSTOM_SSH_PUBLIC_KEY
+          default: ""
+          description: "custom ssh public key for debugging"
     pipeline-scm:
       scm:
         - git:
