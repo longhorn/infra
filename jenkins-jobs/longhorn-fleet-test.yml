@@ -1,0 +1,106 @@
+- job:
+    name: longhorn-fleet-test
+    project-type: pipeline
+    folder: private
+    properties:
+      - build-discarder:
+          num-to-keep: 300
+    parameters:
+      - string:
+          name: NOTIFY_SLACK_CHANNEL
+          default: ""
+          description: "slack Channel ID to send job notification (default: T02RW4JDH)"
+      - bool:
+          name: SEND_SLACK_NOTIFICATION
+          default: true
+          description: "send slack notification? (default: true)"
+      - string:
+          name: FLEET_REPO_URI
+          default: ""
+          description: "git repo contains fleet.yaml to install longhorn"
+      - string:
+          name: FLEET_REPO_VERSION
+          default: ""
+          description: "specify the tag of the fleet git repo"
+      - string:
+          name: LONGHORN_TESTS_CUSTOM_IMAGE
+          default: "longhornio/longhorn-manager-test:master-head"
+          description: "custom longhorn-manager test image, will be used to run tests"
+      - string:
+          name: PYTEST_CUSTOM_OPTIONS
+          default: ""
+          description: "pytest custom options to run specific tests (e.g -k test_hosts)"
+      - string:
+          name: BACKUP_STORE_TYPE
+          default: "nfs-and-s3"
+          description: "The valid values for this field are 'nfs', 's3' and 'nfs-and-s3'"
+      - bool:
+          name: LONGHORN_UPGRADE_TEST
+          default: false
+          description: "run longhorn upgrade test, then run longhorn test suite"
+      - string:
+          name: FLEET_REPO_STABLE_VERSION
+          default: ""
+          description: "fleet git repo of this version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
+      - string:
+          name: FLEET_REPO_TRANSIENT_VERSION
+          default: ""
+          description: "transient fleet git repo version for 2 stage upgrade test. if provided, pipeline will first install the stable version, and then upgrade to this transient version, and finally upgrade to the version to be tested. effective only when LONGHORN_UPGRADE_TEST is TRUE"
+      - string:
+          name: LONGHORN_TEST_CLOUDPROVIDER
+          default: "aws"
+          description: "cloudprovider used to run test suite, supported values:[aws]"
+      - string:
+          name: AWS_REGION
+          default: "us-east-1"
+          description: "aws region (e.g us-east-1), effective only when using aws as cloudprovider"
+      - string:
+          name: AWS_AVAILABILITY_ZONE
+          default: "us-east-1d"
+          description: "aws availability zone (e.g us-east-1), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
+      - string:
+          name: ARCH
+          default: "amd64"
+          description: "architecture of created instances used to run integration tests, supported values: [amd64, arm64]"
+      - string:
+          name: K8S_DISTRO_NAME
+          default: "k3s"
+          description: "kubernetes distro version to install [rke2, k3s] (default: k3s)"
+      - string:
+          name: K8S_DISTRO_VERSION
+          default: "v1.27.1+k3s1"
+          description: |
+              kubernetes version that will be deployed
+              for rke2: (default: v1.27.2+rke2r1)
+              for k3s: (default: v1.27.1+k3s1)
+      - string:
+          name: DISTRO
+          default: "sles"
+          description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles, centos, oracle, rockylinux, sle-micro]"
+      - string:
+          name: DISTRO_VERSION
+          default: "15-sp5"
+          description: |
+            Linux distro version to install on created instances, choosed based on DISTRO values
+            for DISTRO=ubuntu, supported values: [22.04], default: [22.04]
+            for DISTRO=sles, supported values: [15-sp5], default: [15-sp5]
+            for DISTRO=rockylinux, supported values: [9.2], default: [9.2]
+            for DISTRO=rhel, supported values: [9.1.0], default: [9.1.0]
+            for DISTRO=oracle, supported values: [9.1], default: [9.1]
+            for DISTRO=sle-micro, supported values: [5.3], default: [5.3]
+      - string:
+          name: CONTROLPLANE_INSTANCE_TYPE
+          default: "t2.xlarge"
+          description: "aws instance type for controlplane nodes"
+      - string:
+          name: WORKER_INSTANCE_TYPE
+          default: "t2.xlarge"
+          description: "aws instance type for worker nodes"
+    pipeline-scm:
+      scm:
+        - git:
+            url: https://github.com/longhorn/longhorn-tests
+            branches:
+              - master
+      script-path: pipelines/fleet/Jenkinsfile
+      lightweight-checkout: true
