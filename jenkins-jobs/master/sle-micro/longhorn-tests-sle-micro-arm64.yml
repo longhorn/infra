@@ -98,10 +98,10 @@
           description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles, centos, oracle, rockylinux, sle-micro]"
       - string:
           name: DISTRO_VERSION
-          default: "5.3"
+          default: "5.5"
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
-             for DISTRO=sle-micro, supported values: [5.3], default: [5.3]
+             for DISTRO=sle-micro, supported values: [5.5], default: [5.5]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "a1.2xlarge"

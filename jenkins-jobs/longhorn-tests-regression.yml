@@ -269,7 +269,7 @@
              for DISTRO=rockylinux, supported values: [9.2], default: [9.2]
              for DISTRO=rhel, supported values: [9.1.0], default: [9.1.0]
              for DISTRO=oracle, supported values: [9.1], default: [9.1]
-             for DISTRO=sle-micro, supported values: [5.3], default: [5.3]
+             for DISTRO=sle-micro, supported values: [5.5], default: [5.5]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "t2.xlarge"
