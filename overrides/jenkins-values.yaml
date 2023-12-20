@@ -1,5 +1,6 @@
 ---
 controller:
+  tag: "2.361.4-jdk11"
   overwritePlugins: true
   installPlugins:
   - kubernetes-client-api:5.4.1
@@ -43,6 +44,7 @@ controller:
   - gradle:1.38
   - groovy-postbuild:2.5
   - handlebars:3.0.8
+  - htmlpublisher:1.31
   - jackson2-api:2.13.2-260.v43d711474c77
   - javax-activation-api:1.2.0-2
   - javax-mail-api:1.6.2-5
@@ -59,7 +61,7 @@ controller:
   - lockable-resources:2.14
   - mailer:408.vd726a_1130320
   - matrix-auth:3.1.1
-  - matrix-project:771.v574584b_39e60
+  - matrix-project:772.v494f19991984
   - metrics:4.0.2.8.1
   - momentjs:1.1.1
   - okhttp-api:4.9.3-105.vb96869f8ac3a
@@ -83,6 +85,7 @@ controller:
   - popper2-api:2.11.2-1
   - pubsub-light:1.16
   - resource-disposer:0.17
+  - robot:3.3.0
   - scm-api:2.6.5
   - scm-api:595.vd5a_df5eb_0e39
   - script-security:1140.vf967fb_efa_55a_
@@ -106,9 +109,19 @@ controller:
   - workflow-job:1174.vdcb_d054cf74a_
   - workflow-multibranch:711.vdfef37cda_816
   - workflow-scm-step:2.13
-  - workflow-step-api:622.vb_8e7c15b_c95a_
+  - workflow-step-api:625.vd896b_f445a_f8
   - workflow-support:815.vd60466279fc8
   - ws-cleanup:0.40
+  resources:
+    requests:
+      cpu: "2000m"
+      memory: "4Gi"
+    limits:
+      cpu: "4000m"
+      memory: "10Gi"
+  containerEnv:
+    - name: _JAVA_OPTIONS
+      value: "-Xms2048M -Xmx8192M"
   ingress:
     enabled: true
     apiVersion: "networking.k8s.io/v1beta1"
@@ -184,14 +197,13 @@ controller:
             - amd64
   nodeSelector:
     beta.kubernetes.io/arch: amd64
-    k3s.io/hostname: longhorn-infra-controlplane
+    k3s.io/hostname: longhorn-infra-controlplane-2
 persistence:
   enabled: true
   existingClaim: jenkins-v3
 agent:
   nodeSelector:
     beta.kubernetes.io/arch: amd64
-    k3s.io/hostname: longhorn-infra-controlplane
   image: "meldafrawi/jnlp-agent"
   tag: "20220310"
   jenkinsUrl: "https://ci.longhorn.io"
