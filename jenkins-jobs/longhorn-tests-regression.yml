@@ -292,6 +292,10 @@
           name: CUSTOM_SSH_PUBLIC_KEY
           default: ""
           description: "custom ssh public key for debugging"
+      - bool:
+          name: PUBLIC_WORKER_NODE
+          default: false
+          description: "whether to assign public ip for worker nodes"
     pipeline-scm:
       scm:
         - git:
