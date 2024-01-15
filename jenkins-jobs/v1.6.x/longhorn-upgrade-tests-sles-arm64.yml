@@ -1,7 +1,7 @@
 - job:
-    name: v1.4.x-longhorn-upgrade-tests-sles-arm64
+    name: v1.6.x-longhorn-upgrade-tests-sles-arm64
     project-type: pipeline
-    folder: public/v1.4.x
+    folder: public/v1.6.x
     properties:
       - build-discarder:
           days-to-keep: 180
@@ -20,31 +20,31 @@
           description: "longhorn repo URI"
       - string:
           name: LONGHORN_REPO_BRANCH
-          default: "v1.4.x"
+          default: "v1.6.x"
           description: "longhorn repo branch"
       - string:
           name: CUSTOM_LONGHORN_MANAGER_IMAGE
-          default: "longhornio/longhorn-manager:v1.4.x-head"
+          default: "longhornio/longhorn-manager:v1.6.x-head"
           description: "custom longhorn-manager image (e.g USER/longhorn-manager:testing)"
       - string:
           name: CUSTOM_LONGHORN_ENGINE_IMAGE
-          default: "longhornio/longhorn-engine:v1.4.x-head"
+          default: "longhornio/longhorn-engine:v1.6.x-head"
           description: "custom longhorn-engine image (e.g USER/longhorn-engine:testing)"
       - string:
           name: CUSTOM_LONGHORN_INSTANCE_MANAGER_IMAGE
-          default: "longhornio/longhorn-instance-manager:v1.4.x-head"
+          default: "longhornio/longhorn-instance-manager:v1.6.x-head"
           description: "custom longhorn-instance-manager image (e.g USER/longhorn-instance-manager:testing), leave blank to use the default"
       - string:
           name: CUSTOM_LONGHORN_SHARE_MANAGER_IMAGE
-          default: "longhornio/longhorn-share-manager:v1.4.x-head"
+          default: "longhornio/longhorn-share-manager:v1.6.x-head"
           description: "custom longhorn-share-manager image (e.g USER/longhorn-share-manager:testing), leave blank to use the default"
       - string:
           name: CUSTOM_LONGHORN_BACKING_IMAGE_MANAGER_IMAGE
-          default: "longhornio/backing-image-manager:v1.4.x-head"
+          default: "longhornio/backing-image-manager:v1.6.x-head"
           description: "custom backing-image-manager image (e.g USER/backing-image-manager:testing), leave blank to use the default"
       - string:
           name: LONGHORN_TESTS_CUSTOM_IMAGE
-          default: "longhornio/longhorn-manager-test:v1.4.x-head"
+          default: "longhornio/longhorn-manager-test:v1.6.x-head"
           description: "custom longhorn-manager test image, will be used to run tests"
       - string:
           name: PYTEST_CUSTOM_OPTIONS
@@ -63,7 +63,7 @@
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
           name: LONGHORN_STABLE_VERSION
-          default: "v1.4.4"
+          default: "v1.5.3"
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: LONGHORN_TRANSIENT_VERSION
@@ -91,11 +91,11 @@
           description: "kubernetes distro version to install [rke2, k3s] (default: k3s)"
       - string:
           name: K8S_DISTRO_VERSION
-          default: "v1.24.16+k3s1"
+          default: "v1.28.4+k3s1"
           description: |
               kubernetes version that will be deployed
-              for rke2: (default: v1.24.16+rke2r1)
-              for k3s: (default: v1.24.16+k3s1)
+              for rke2: (default: v1.28.4+rke2r1)
+              for k3s: (default: v1.28.4+k3s1)
       - string:
           name: DISTRO
           default: "sles"
@@ -119,12 +119,12 @@
         - git:
             url: https://github.com/longhorn/longhorn-tests
             branches:
-              - v1.4.x
+              - v1.6.x
       script-path: test_framework/Jenkinsfile
       lightweight-checkout: true
     triggers:
       - parameterized-timer:
           cron: |
             TZ=Asia/Taipei
-            H 19 * * 0 % BACKUP_STORE_TYPE=s3;LONGHORN_STABLE_VERSION=v1.3.3
-            H 19 * * 1 % BACKUP_STORE_TYPE=nfs;LONGHORN_STABLE_VERSION=v1.4.4
+            H 19 * * 0,1,3,5 % BACKUP_STORE_TYPE=s3;LONGHORN_STABLE_VERSION=v1.4.4
+            H 19 * * 2,4,6 % BACKUP_STORE_TYPE=nfs;LONGHORN_STABLE_VERSION=v1.5.3
