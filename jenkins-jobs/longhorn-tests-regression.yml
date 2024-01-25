@@ -266,7 +266,7 @@
              Linux distro version to install on created instances, choosed based on DISTRO values
              for DISTRO=ubuntu, supported values: [22.04], default: [22.04]
              for DISTRO=sles, supported values: [15-sp5], default: [15-sp5]
-             for DISTRO=rockylinux, supported values: [9.2], default: [9.2]
+             for DISTRO=rockylinux, supported values: [9.3], default: [9.3]
              for DISTRO=rhel, supported values: [9.1.0], default: [9.1.0]
              for DISTRO=oracle, supported values: [9.1], default: [9.1]
              for DISTRO=sle-micro, supported values: [5.5], default: [5.5]
