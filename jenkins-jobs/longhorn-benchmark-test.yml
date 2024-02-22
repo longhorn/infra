@@ -109,7 +109,7 @@
               since benchmark test doesn't run on control plane, the architecture or the machine type doesn't matter
               light-weight low-cost machine can be used
               for equinix, c3.small.x86 can be used
-              for aws, t2.xlarge can be used
+              for aws, t3.xlarge can be used
       - string:
           name: WORKER_INSTANCE_TYPE
           default: "m3.large.x86"

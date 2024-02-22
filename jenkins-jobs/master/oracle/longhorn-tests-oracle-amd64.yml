@@ -104,11 +104,11 @@
              for DISTRO=oracle, supported values: [9.1], default: [9.1]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
-          default: "t2.xlarge"
+          default: "t3.xlarge"
           description: "aws instance type for controlplane nodes"
       - string:
           name: WORKER_INSTANCE_TYPE
-          default: "t2.xlarge"
+          default: "t3.xlarge"
           description: "aws instance type for worker nodes"
     pipeline-scm:
       scm:
