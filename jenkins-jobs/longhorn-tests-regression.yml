@@ -15,6 +15,10 @@
           name: USE_HDD
           default: false
           description: "use HDD as Longhorn disks? (default: false)"
+      - bool:
+          name: ENABLE_MTLS
+          default: false
+          description: "enable MTLS for grpc communication between longhorn-manager and instance-manager"
       - string:
           name: NOTIFY_SLACK_CHANNEL
           default: ""
