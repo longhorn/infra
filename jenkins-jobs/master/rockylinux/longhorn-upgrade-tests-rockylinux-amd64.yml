@@ -104,11 +104,11 @@
              for DISTRO=rockylinux, supported values: [9.3], default: [9.3]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
-          default: "t3.xlarge"
+          default: "t2.xlarge"
           description: "aws instance type for controlplane nodes"
       - string:
           name: WORKER_INSTANCE_TYPE
-          default: "t3.xlarge"
+          default: "t2.xlarge"
           description: "aws instance type for worker nodes"
       - choice:
           name: SELINUX_MODE

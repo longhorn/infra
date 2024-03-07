@@ -276,11 +276,11 @@
              for DISTRO=sle-micro, supported values: [5.5], default: [5.5]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
-          default: "t3.xlarge"
+          default: "t2.xlarge"
           description: "aws instance type for controlplane nodes"
       - string:
           name: WORKER_INSTANCE_TYPE
-          default: "t3.xlarge"
+          default: "t2.xlarge"
           description: "aws instance type for worker nodes"
       - choice:
           name: SELINUX_MODE
