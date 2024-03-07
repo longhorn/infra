@@ -104,11 +104,11 @@
              for DISTRO=ubuntu, supported values: [22.04], default: [22.04]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
-          default: "t4g.xlarge"
+          default: "a1.2xlarge"
           description: "aws instance type for controlplane nodes"
       - string:
           name: WORKER_INSTANCE_TYPE
-          default: "t4g.xlarge"
+          default: "a1.2xlarge"
           description: "aws instance type for worker nodes"
     pipeline-scm:
       scm:

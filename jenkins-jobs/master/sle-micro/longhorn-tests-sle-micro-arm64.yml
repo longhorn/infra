@@ -104,11 +104,11 @@
              for DISTRO=sle-micro, supported values: [5.5], default: [5.5]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
-          default: "t4g.xlarge"
+          default: "a1.2xlarge"
           description: "aws instance type for controlplane nodes"
       - string:
           name: WORKER_INSTANCE_TYPE
-          default: "t4g.xlarge"
+          default: "a1.2xlarge"
           description: "aws instance type for worker nodes"
     pipeline-scm:
       scm:

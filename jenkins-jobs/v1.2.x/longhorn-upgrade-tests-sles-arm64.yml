@@ -106,11 +106,11 @@
              for DISTRO=centos, supported values: [8.4], default: [8.4]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
-          default: "t4g.xlarge"
+          default: "a1.xlarge"
           description: "aws instance type for controlplane nodes"
       - string:
           name: WORKER_INSTANCE_TYPE
-          default: "t4g.xlarge"
+          default: "a1.xlarge"
           description: "aws instance type for worker nodes"
     pipeline-scm:
       scm:
