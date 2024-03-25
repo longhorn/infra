@@ -4,7 +4,7 @@
     folder: private
     properties:
       - build-discarder:
-          days-to-keep: 180
+          num-to-keep: 300
     parameters:
       - bool:
           name: SEND_SLACK_NOTIFICATION
