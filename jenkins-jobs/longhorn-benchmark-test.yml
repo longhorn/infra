@@ -5,7 +5,7 @@
     folder: private
     properties:
       - build-discarder:
-          days-to-keep: 180
+          num-to-keep: 300
     parameters:
       - string:
             name: TEST_SIZE
