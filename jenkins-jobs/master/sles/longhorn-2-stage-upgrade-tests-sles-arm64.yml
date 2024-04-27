@@ -67,7 +67,7 @@
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: LONGHORN_TRANSIENT_VERSION
-          default: "v1.6.0"
+          default: "v1.6.1"
           description: "transient longhorn version for 2 stage upgrade test. if provided, longhorn will first install the stable version, and then upgrade to this transient version, and finally upgrade to the version to be tested. effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: LONGHORN_TEST_CLOUDPROVIDER
@@ -91,11 +91,11 @@
           description: "kubernetes distro version to install [rke2, k3s] (default: k3s)"
       - string:
           name: K8S_DISTRO_VERSION
-          default: "v1.28.4+k3s1"
+          default: "v1.29.3+k3s1"
           description: |
               kubernetes version that will be deployed
-              for rke2: (default: v1.28.4+rke2r1)
-              for k3s: (default: v1.28.4+k3s1)
+              for rke2: (default: v1.29.2+rke2r1)
+              for k3s: (default: v1.29.3+k3s1)
       - string:
           name: DISTRO
           default: "sles"
