@@ -130,6 +130,10 @@
           - permissive
           - enforcing
           description: "SELINUX mode [permissive | enforcing] (available only for Rockylinux and RHEL)  default: permissive"
+      - bool:
+          name: RUN_V2_TEST
+          default: true
+          description: "whether to create extra block device to run v2 test? (default: true)"
     pipeline-scm:
       scm:
         - git:
