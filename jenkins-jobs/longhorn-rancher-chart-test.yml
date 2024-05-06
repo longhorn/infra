@@ -110,6 +110,10 @@
           name: WORKER_INSTANCE_TYPE
           default: "t2.xlarge"
           description: "aws instance type for worker nodes"
+      - bool:
+          name: RANCHER_PRIME
+          default: false
+          description: "install rancher prime? (default: false)"
     pipeline-scm:
       scm:
         - git:
