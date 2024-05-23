@@ -63,7 +63,7 @@
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
           name: LONGHORN_STABLE_VERSION
-          default: "v1.6.1"
+          default: "v1.6.2"
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: LONGHORN_TRANSIENT_VERSION
@@ -127,4 +127,4 @@
           cron: |
             TZ=Asia/Taipei
             H 19 * * 3,5 % BACKUP_STORE_TYPE=s3;LONGHORN_STABLE_VERSION=v1.5.5
-            H 19 * * 4,6 % BACKUP_STORE_TYPE=nfs;LONGHORN_STABLE_VERSION=v1.6.1
+            H 19 * * 4,6 % BACKUP_STORE_TYPE=nfs;LONGHORN_STABLE_VERSION=v1.6.2

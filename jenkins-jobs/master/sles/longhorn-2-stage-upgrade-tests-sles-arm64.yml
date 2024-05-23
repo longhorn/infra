@@ -67,7 +67,7 @@
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: LONGHORN_TRANSIENT_VERSION
-          default: "v1.6.1"
+          default: "v1.6.2"
           description: "transient longhorn version for 2 stage upgrade test. if provided, longhorn will first install the stable version, and then upgrade to this transient version, and finally upgrade to the version to be tested. effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: LONGHORN_TEST_CLOUDPROVIDER
