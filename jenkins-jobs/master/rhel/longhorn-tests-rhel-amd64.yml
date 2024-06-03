@@ -5,6 +5,7 @@
     properties:
       - build-discarder:
           num-to-keep: 300
+          artifact-num-to-keep: 10
     parameters:
       - string:
           name: NOTIFY_SLACK_CHANNEL
