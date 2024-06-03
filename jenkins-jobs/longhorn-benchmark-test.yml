@@ -83,11 +83,11 @@
               for arm64, since rke2 doesn't support arm64, only k3s can be used
       - string:
           name: K8S_DISTRO_VERSION
-          default: "v1.24.7+rke2r1"
+          default: "v1.30.0+rke2r1"
           description: |
               kubernetes version that will be deployed
-              for rke2: (default: v1.24.7+rke2r1)
-              for k3s: (default: v1.24.7+k3s1)
+              for rke2: (default: v1.30.0+rke2r1)
+              for k3s: (default: v1.30.0+k3s1)
       - string:
           name: DISTRO
           default: "ubuntu"
