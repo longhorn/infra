@@ -18,15 +18,15 @@
       - string:
           name: RANCHER_VERSION
           default: ""
-          description: "if empty, latest version will be installed"
+          description: "if empty, latest version will be installed (e.g v2.8.4)"
       - string:
           name: RANCHER_CHART_REPO_URI
-          default: ""
-          description: "rancher chart repo URI"
+          default: "https://github.com/rancher/charts.git"
+          description: "rancher chart repo URI (e.g https://github.com/rancher/charts.git)"
       - string:
           name: RANCHER_CHART_REPO_BRANCH
-          default: ""
-          description: "rancher chart repo branch"
+          default: "dev-v2.8"
+          description: "rancher chart repo branch (e.g dev-v2.8)"
       - choice:
           name: LONGHORN_REPO
           choices:
@@ -35,8 +35,11 @@
           description: "dockerhub repo of longhorn components"
       - string:
           name: LONGHORN_INSTALL_VERSION
-          default: "102.3.0+up1.5.1"
-          description: "longhorn version that will be installed"
+          default: "103.3.1+up1.6.2"
+          description: |
+              longhorn version that will be installed
+              for rancher v2.8.4, (e.g 103.3.1+up1.6.2, 103.3.0+up1.6.1, 103.2.3+up1.5.5, 103.1.1+up1.4.4)
+              for rancher v2.7.13, (e.g 102.4.1+up1.6.2, 102.4.0+up1.6.1, 102.3.3+up1.5.5, 102.2.3+up1.4.4)
       - string:
           name: LONGHORN_TESTS_CUSTOM_IMAGE
           default: "longhornio/longhorn-manager-test:master-head"
@@ -55,11 +58,11 @@
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
           name: LONGHORN_STABLE_VERSION
-          default: "102.2.0+up1.4.1"
+          default: "103.2.3+up1.5.5"
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: LONGHORN_TRANSIENT_VERSION
-          default: "102.2.1+up1.4.2"
+          default: "103.3.0+up1.6.1"
           description: "transient longhorn version for 2 stage upgrade test. if provided, longhorn will first install the stable version, and then upgrade to this transient version, and finally upgrade to the version to be tested. effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: LONGHORN_TEST_CLOUDPROVIDER
@@ -83,11 +86,11 @@
           description: "kubernetes distro version to install [rke2, k3s] (default: k3s)"
       - string:
           name: K8S_DISTRO_VERSION
-          default: "v1.25.3+k3s1"
+          default: "v1.28.10+k3s1"
           description: |
               kubernetes version that will be deployed
-              for rke2: (default: v1.25.11+rke2r1)
-              for k3s: (default: v1.25.3+k3s1)
+              for rke2: (default: v1.28.10+rke2r1)
+              for k3s: (default: v1.28.10+k3s1)
       - string:
           name: DISTRO
           default: "sles"
