@@ -135,6 +135,10 @@
           name: RUN_V2_TEST
           default: true
           description: "whether to create extra block device to run v2 test? (default: true)"
+      - bool:
+          name: OUT_OF_CLUSTER
+          default: false
+          description: "whether to run test out of cluster (as a container) or in-cluster (as a pod)? (default: false)"
     pipeline-scm:
       scm:
         - git:
