@@ -58,15 +58,15 @@
       - string:
           name: PYTEST_CUSTOM_OPTIONS
           default: ""
-          description: "pytest custom options to run specific tests (e.g -k test_hosts)"
+          description: 'pytest custom options to run specific tests (e.g -t \"Reboot Volume Node While Workload Heavy Writing\" -v LOOP_COUNT:20 -v RETRY_COUNT:259200)'
       - bool:
           name: LONGHORN_UPGRADE_TEST
           default: false
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
           name: BACKUP_STORE_TYPE
-          default: "nfs-and-s3"
-          description: "The valid values for this field are 'nfs', 's3' and 'nfs-and-s3'"
+          default: "s3"
+          description: "The valid values for this field are 'nfs', 's3'"
       - string:
           name: LONGHORN_STABLE_VERSION
           default: "v1.5.1"
