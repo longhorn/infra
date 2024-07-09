@@ -99,10 +99,10 @@
           description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles, centos, oracle, rockylinux]"
       - string:
           name: DISTRO_VERSION
-          default: "15-sp5"
+          default: "15-sp6"
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
-             for DISTRO=sles, supported values: [15-sp5], default: [15-sp5]
+             for DISTRO=sles, supported values: [15-sp6], default: [15-sp6]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "a1.2xlarge"
