@@ -49,7 +49,7 @@
           description: "custom longhorn-manager test image, will be used to run tests"
       - string:
           name: PYTEST_CUSTOM_OPTIONS
-          default: ""
+          default: "--ignore test_zone.py"
           description: "pytest custom options to run specific tests (e.g -k test_hosts)"
       - string:
           name: BACKUP_STORE_TYPE
