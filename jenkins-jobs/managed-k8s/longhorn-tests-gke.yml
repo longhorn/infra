@@ -66,6 +66,10 @@
           name: LONGHORN_STABLE_VERSION
           default: "v1.6.2"
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
+      - string:
+          name: DISTRO
+          default: "COS_CONTAINERD"
+          description: "the default distro used by a new node pool, supported values: [UBUNTU_CONTAINERD, COS_CONTAINERD]"
     pipeline-scm:
       scm:
         - git:
