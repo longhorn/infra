@@ -53,7 +53,7 @@
           description: "pytest custom options to run specific tests (e.g -k test_hosts)"
       - string:
           name: BACKUP_STORE_TYPE
-          default: "nfs-and-s3"
+          default: "s3"
           description: "The valid values for this field are 'nfs', 's3' and 'nfs-and-s3'"
       - string:
           name: TF_VAR_tf_workspace
