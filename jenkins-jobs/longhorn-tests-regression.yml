@@ -260,10 +260,11 @@
               kubernetes version that will be deployed
               for rke2: (default: v1.30.0+rke2r1)
               for k3s: (default: v1.30.0+k3s1)
+              for talos: (default: v1.30.0)
       - string:
           name: DISTRO
           default: "sles"
-          description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles, centos, oracle, rockylinux, sle-micro]"
+          description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles, centos, oracle, rockylinux, sle-micro, talos]"
       - string:
           name: DISTRO_VERSION
           default: "15-sp6"
@@ -275,6 +276,7 @@
              for DISTRO=rhel, supported values: [9.3.0], default: [9.3.0]
              for DISTRO=oracle, supported values: [9.3], default: [9.3]
              for DISTRO=sle-micro, supported values: [6.0], default: [6.0]
+             for DISTRO=talos, supported values: [1.7.6], default: [1.7.6]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "t2.xlarge"

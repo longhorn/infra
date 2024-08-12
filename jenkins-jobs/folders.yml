@@ -86,6 +86,13 @@
     name: public/master/sle-micro/arm64
     project-type: folder
 
+- job:
+    name: public/master/talos
+    project-type: folder
+
+- job:
+    name: public/master/talos/amd64
+    project-type: folder
 
 - job:
     name: private
