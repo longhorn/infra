@@ -18,15 +18,15 @@
       - string:
           name: RANCHER_VERSION
           default: ""
-          description: "if empty, latest version will be installed (e.g v2.8.4)"
+          description: "if empty, latest version will be installed (e.g v2.9.1, v2.8.5)"
       - string:
           name: RANCHER_CHART_REPO_URI
           default: "https://github.com/rancher/charts.git"
           description: "rancher chart repo URI (e.g https://github.com/rancher/charts.git)"
       - string:
           name: RANCHER_CHART_REPO_BRANCH
-          default: "dev-v2.8"
-          description: "rancher chart repo branch (e.g dev-v2.8)"
+          default: "dev-v2.9"
+          description: "rancher chart repo branch (e.g dev-v2.9, dev-v2.8)"
       - choice:
           name: LONGHORN_REPO
           choices:
@@ -35,11 +35,12 @@
           description: "dockerhub repo of longhorn components"
       - string:
           name: LONGHORN_INSTALL_VERSION
-          default: "103.3.1+up1.6.2"
+          default: "104.1.0+up1.6.2"
           description: |
               longhorn version that will be installed
-              for rancher v2.8.4, (e.g 103.3.1+up1.6.2, 103.3.0+up1.6.1, 103.2.3+up1.5.5, 103.1.1+up1.4.4)
-              for rancher v2.7.13, (e.g 102.4.1+up1.6.2, 102.4.0+up1.6.1, 102.3.3+up1.5.5, 102.2.3+up1.4.4)
+              for rancher v2.9.1, (e.g 104.1.0+up1.6.2, 104.0.0+up1.5.5)
+              for rancher v2.8.5, (e.g 103.3.1+up1.6.2, 103.3.0+up1.6.1, 103.2.3+up1.5.5, 103.1.1+up1.4.4)
+              for rancher v2.7.15, (e.g 102.4.1+up1.6.2, 102.4.0+up1.6.1, 102.3.3+up1.5.5, 102.2.3+up1.4.4)
       - string:
           name: LONGHORN_TESTS_CUSTOM_IMAGE
           default: "longhornio/longhorn-manager-test:master-head"
@@ -58,11 +59,11 @@
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
           name: LONGHORN_STABLE_VERSION
-          default: "103.2.3+up1.5.5"
+          default: "104.0.0+up1.5.5"
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: LONGHORN_TRANSIENT_VERSION
-          default: "103.3.0+up1.6.1"
+          default: "104.1.0+up1.6.2"
           description: "transient longhorn version for 2 stage upgrade test. if provided, longhorn will first install the stable version, and then upgrade to this transient version, and finally upgrade to the version to be tested. effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: LONGHORN_TEST_CLOUDPROVIDER
