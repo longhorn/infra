@@ -139,6 +139,10 @@
           name: OUT_OF_CLUSTER
           default: false
           description: "whether to run test out of cluster (as a container) or in-cluster (as a pod)? (default: false)"
+      - string:
+          name: CUSTOM_SSH_PUBLIC_KEY
+          default: ""
+          description: "custom ssh public key for debugging"
     pipeline-scm:
       scm:
         - git:
