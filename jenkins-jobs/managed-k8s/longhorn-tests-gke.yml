@@ -64,7 +64,7 @@
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
           name: LONGHORN_STABLE_VERSION
-          default: "v1.6.2"
+          default: "v1.7.1"
           description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
       - string:
           name: DISTRO
