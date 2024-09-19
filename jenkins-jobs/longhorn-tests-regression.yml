@@ -161,7 +161,7 @@
               if (!LONGHORN_INSTALL_METHOD.equals('custom')) {
                 return "<input class='setting-input jenkins-input' name='value' value='N/A' type='text' disabled style='opacity: 0.5;'>";
               } else {
-                return "<input class='setting-input jenkins-input' name='value' value='' type='text'>";
+                return "<input class='setting-input jenkins-input' name='value' value='longhornio/longhorn-instance-manager:master-head' type='text'>";
               }
             use-groovy-sandbox: false
           choice-type: formatted-html
@@ -175,7 +175,7 @@
               if (!LONGHORN_INSTALL_METHOD.equals('custom')) {
                 return "<input class='setting-input jenkins-input' name='value' value='N/A' type='text' disabled style='opacity: 0.5;'>";
               } else {
-                return "<input class='setting-input jenkins-input' name='value' value='' type='text'>";
+                return "<input class='setting-input jenkins-input' name='value' value='longhornio/longhorn-share-manager:master-head' type='text'>";
               }
             use-groovy-sandbox: false
           choice-type: formatted-html
@@ -189,7 +189,7 @@
               if (!LONGHORN_INSTALL_METHOD.equals('custom')) {
                 return "<input class='setting-input jenkins-input' name='value' value='N/A' type='text' disabled style='opacity: 0.5;'>";
               } else {
-                return "<input class='setting-input jenkins-input' name='value' value='' type='text'>";
+                return "<input class='setting-input jenkins-input' name='value' value='longhornio/backing-image-manager:master-head' type='text'>";
               }
             use-groovy-sandbox: false
           choice-type: formatted-html
