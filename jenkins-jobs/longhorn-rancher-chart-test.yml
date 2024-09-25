@@ -18,7 +18,13 @@
       - string:
           name: RANCHER_VERSION
           default: ""
-          description: "if empty, latest version will be installed (e.g v2.9.1, v2.8.5)"
+          description: |
+              if empty, latest version will be installed
+              for rancher v2.9.x, (e.g v2.9.2)
+              for rancher v2.8.x, (e.g v2.8.5)
+              for rancher prime v2.8.x, (e.g v2.8.8)
+              for rancher v2.7.x (e.g v2.7.10)
+              for rancher prime v2.7.x (e.g v2.7.15)
       - string:
           name: RANCHER_CHART_REPO_URI
           default: "https://github.com/rancher/charts.git"
@@ -26,7 +32,7 @@
       - string:
           name: RANCHER_CHART_REPO_BRANCH
           default: "dev-v2.9"
-          description: "rancher chart repo branch (e.g dev-v2.9, dev-v2.8)"
+          description: "rancher chart repo branch (e.g dev-v2.9, dev-v2.8, dev-v2.7)"
       - choice:
           name: LONGHORN_REPO
           choices:
@@ -35,12 +41,12 @@
           description: "dockerhub repo of longhorn components"
       - string:
           name: LONGHORN_INSTALL_VERSION
-          default: "104.1.0+up1.6.2"
+          default: "104.2.0+up1.7.1"
           description: |
               longhorn version that will be installed
-              for rancher v2.9.1, (e.g 104.1.0+up1.6.2, 104.0.0+up1.5.5)
-              for rancher v2.8.5, (e.g 103.3.1+up1.6.2, 103.3.0+up1.6.1, 103.2.3+up1.5.5, 103.1.1+up1.4.4)
-              for rancher v2.7.15, (e.g 102.4.1+up1.6.2, 102.4.0+up1.6.1, 102.3.3+up1.5.5, 102.2.3+up1.4.4)
+              for rancher v2.9.x, (e.g 104.2.0+up1.7.1, 104.1.0+up1.6.2, 104.0.0+up1.5.5)
+              for rancher v2.8.x, (e.g 103.4.0+up1.7.1, 103.3.1+up1.6.2, 103.3.0+up1.6.1, 103.2.3+up1.5.5, 103.1.1+up1.4.4)
+              for rancher v2.7.x, (e.g 102.5.0+up1.7.1, 102.4.1+up1.6.2, 102.4.0+up1.6.1, 102.3.3+up1.5.5, 102.2.3+up1.4.4)
       - string:
           name: LONGHORN_TESTS_CUSTOM_IMAGE
           default: "longhornio/longhorn-manager-test:master-head"
@@ -92,6 +98,7 @@
               kubernetes version that will be deployed
               for rke2: (default: v1.28.10+rke2r1)
               for k3s: (default: v1.28.10+k3s1)
+              for rancher v2.7.x require kubernetes version < 1.27.0-0
       - string:
           name: DISTRO
           default: "sles"
