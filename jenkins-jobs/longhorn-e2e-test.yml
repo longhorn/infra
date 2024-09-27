@@ -66,7 +66,7 @@
       - string:
           name: BACKUP_STORE_TYPE
           default: "s3"
-          description: "The valid values for this field are 'nfs', 's3'"
+          description: "The valid values for this field is 's3'"
       - string:
           name: LONGHORN_STABLE_VERSION
           default: "v1.5.1"
