@@ -88,11 +88,11 @@
           description: "kubernetes distro version to install [rke2, k3s] (default: k3s)"
       - string:
           name: K8S_DISTRO_VERSION
-          default: "v1.30.0+k3s1"
+          default: "v1.31.1+k3s1"
           description: |
               kubernetes version that will be deployed
-              for rke2: (default: v1.30.0+rke2r1)
-              for k3s: (default: v1.30.0+k3s1)
+              for rke2: (default: v1.31.1+rke2r1)
+              for k3s: (default: v1.31.1+k3s1)
       - string:
           name: DISTRO
           default: "ubuntu"
