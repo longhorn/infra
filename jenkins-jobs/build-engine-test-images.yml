@@ -21,7 +21,7 @@
           default: ""
           description: |
               Build test engine image by running:
-              git clone https://github.com/longhorn/longhorn-engine.git --branch ${commit_id} --single-branch
+              git clone https://github.com/longhorn/longhorn-engine.git --branch COMMIT_ID --single-branch
               Empty value will mean pulling master-head to build test images
     pipeline-scm:
       scm:
