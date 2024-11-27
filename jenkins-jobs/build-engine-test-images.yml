@@ -19,8 +19,10 @@
       - string:
           name: COMMIT_ID
           default: ""
-          description: "Build test engine image by git clone https://github.com/longhorn/longhorn-engine.git --branch ${commit_id} --single-branch \n
-                        Empty value will means pull master-head to build test images\n"                       
+          description: |
+              Build test engine image by running:
+              git clone https://github.com/longhorn/longhorn-engine.git --branch ${commit_id} --single-branch
+              Empty value will mean pulling master-head to build test images
     pipeline-scm:
       scm:
         - git:
