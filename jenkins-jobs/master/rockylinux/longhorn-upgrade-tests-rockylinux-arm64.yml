@@ -99,17 +99,17 @@
           description: "Linux distro used to install on created instances, supported values: [ubuntu, rhel, sles, centos, oracle, rockylinux]"
       - string:
           name: DISTRO_VERSION
-          default: "9.3"
+          default: "9.5"
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
-             for DISTRO=rockylinux, supported values: [9.3], default: [9.3]
+             for DISTRO=rockylinux, supported values: [9.3, 9.4, 9.5], default: [9.5]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
-          default: "a1.2xlarge"
+          default: "t4g.xlarge"
           description: "aws instance type for controlplane nodes"
       - string:
           name: WORKER_INSTANCE_TYPE
-          default: "a1.2xlarge"
+          default: "t4g.xlarge"
           description: "aws instance type for worker nodes"
       - choice:
           name: SELINUX_MODE
