@@ -1,7 +1,7 @@
 - job:
-    name: longhorn-tests-talos-amd64
+    name: longhorn-upgrade-tests-talos-arm64
     project-type: pipeline
-    folder: public/master/talos/amd64
+    folder: public/master/talos/arm64
     properties:
       - build-discarder:
           num-to-keep: 300
@@ -60,7 +60,7 @@
           default: /src/longhorn-tests/test_framework
       - bool:
           name: LONGHORN_UPGRADE_TEST
-          default: false
+          default: true
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
           name: LONGHORN_STABLE_VERSION
@@ -80,7 +80,7 @@
           description: "aws availability zone (e.g us-east-1a), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
       - string:
           name: ARCH
-          default: "amd64"
+          default: "arm64"
           description: "architecture of created instances used to run integration tests, supported values: [amd64, arm64]"
       - string:
           name: K8S_DISTRO_NAME
@@ -106,11 +106,11 @@
              for DISTRO=talos, supported values: [1.8.3], default: [1.8.3]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
-          default: "t2.xlarge"
+          default: "a1.2xlarge"
           description: "aws instance type for controlplane nodes"
       - string:
           name: WORKER_INSTANCE_TYPE
-          default: "t2.xlarge"
+          default: "a1.2xlarge"
           description: "aws instance type for worker nodes"
     pipeline-scm:
       scm:
