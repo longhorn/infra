@@ -95,6 +95,10 @@
     project-type: folder
 
 - job:
+    name: public/master/talos/arm64
+    project-type: folder
+
+- job:
     name: private
     project-type: folder
 
