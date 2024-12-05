@@ -37,6 +37,9 @@
       script-path: secscan/Jenkinsfile
       lightweight-checkout: true
     triggers:
-      - timed: |-
+      - parameterized-timer:
+          cron: |
             TZ=Asia/Taipei
-            H 21 * * *
+            H 21 * * 1,2 % TF_VAR_LONGHORN_VERSION=master
+            H 21 * * 3,4 % TF_VAR_LONGHORN_VERSION=v1.7.x
+            H 21 * * 5,6 % TF_VAR_LONGHORN_VERSION=v1.6.x
