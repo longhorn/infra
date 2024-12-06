@@ -73,8 +73,8 @@
           description: "run longhorn upgrade test, then run longhorn test suite"
       - string:
           name: BACKUP_STORE_TYPE
-          default: "nfs-and-s3"
-          description: "The valid values for this field are 'nfs', 's3' and 'nfs-and-s3'"
+          default: "s3"
+          description: "The valid values for this field are 'nfs', 's3', 'cifs' and 'azurite', any other value provided will use all those four backupstores."
       - string:
           name: LONGHORN_STABLE_VERSION
           default: "v1.7.2"

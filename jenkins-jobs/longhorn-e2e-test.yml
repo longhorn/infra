@@ -66,7 +66,7 @@
       - string:
           name: BACKUP_STORE_TYPE
           default: "s3"
-          description: "The valid values for this field are 'nfs', 's3'"
+          description: "The valid values for this field are 'nfs', 's3', 'cifs' and 'azurite', any other value provided will use all those four backupstores."
       - string:
           name: LONGHORN_STABLE_VERSION
           default: "v1.5.1"
