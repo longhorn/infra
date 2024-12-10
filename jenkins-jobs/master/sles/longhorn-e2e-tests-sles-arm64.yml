@@ -1,8 +1,7 @@
 - job:
-    concurrent: true
-    name: longhorn-e2e-test
+    name: longhorn-e2e-tests-sles-arm64
     project-type: pipeline
-    folder: private
+    folder: public/master/sles/arm64
     properties:
       - build-discarder:
           num-to-keep: 300
@@ -50,7 +49,7 @@
           description: "custom longhorn-manager test image, will be used to run tests"
       - string:
           name: ROBOT_CUSTOM_OPTIONS
-          default: ""
+          default: "-i \"regression\" --exclude \"cluster\" --exclude \"storage-network\" --exclude \"large-size\" -v RETRY_COUNT:1200 -v DATA_ENGINE:v1"
           description: 'robot custom options to run specific tests (e.g -t \"Reboot Volume Node While Workload Heavy Writing\" -v LOOP_COUNT:20 -v RETRY_COUNT:259200)'
       - string:
           name: BACKUP_STORE_TYPE
@@ -59,7 +58,7 @@
       - string:
           name: LONGHORN_STABLE_VERSION
           default: "v1.7.2"
-          description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
+          description: "longhorn stable version to be installed"
       - string:
           name: LONGHORN_TEST_CLOUDPROVIDER
           default: "aws"
@@ -74,7 +73,7 @@
           description: "aws availability zone (e.g us-east-1c), effective only when using aws as cloudprovider, choosed based on AWS_REGION value"
       - string:
           name: ARCH
-          default: "amd64"
+          default: "arm64"
           description: "architecture of created instances used to run integration tests, supported values: [amd64, arm64]"
       - string:
           name: K8S_DISTRO_NAME
@@ -96,19 +95,14 @@
           default: "15-sp6"
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
-             for DISTRO=ubuntu, supported values: [22.04], default: [22.04]
              for DISTRO=sles, supported values: [15-sp6], default: [15-sp6]
-             for DISTRO=rockylinux, supported values: [9.3], default: [9.3]
-             for DISTRO=rhel, supported values: [9.3.0], default: [9.3.0]
-             for DISTRO=oracle, supported values: [9.3], default: [9.3]
-             for DISTRO=sle-micro, supported values: [6.0], default: [6.0]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
-          default: "t2.xlarge"
+          default: "a1.2xlarge"
           description: "aws instance type for controlplane nodes"
       - string:
           name: WORKER_INSTANCE_TYPE
-          default: "t2.xlarge"
+          default: "a1.2xlarge"
           description: "aws instance type for worker nodes"
       - choice:
           name: SELINUX_MODE
@@ -136,3 +130,9 @@
               - master
       script-path: pipelines/e2e/Jenkinsfile
       lightweight-checkout: true
+    triggers:
+      - parameterized-timer:
+          cron: |
+            TZ=Asia/Taipei
+            H 19 * * 1,2,3,4
+            H 19 * * 5 % ROBOT_CUSTOM_OPTIONS="-i \"negative\" --exclude \"cluster\" --exclude \"storage-network\" --exclude \"large-size\" -v RETRY_COUNT:1200 -v DATA_ENGINE:v1"
