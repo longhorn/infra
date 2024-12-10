@@ -1,8 +1,7 @@
 - job:
-    concurrent: true
-    name: longhorn-e2e-test
+    name: v1.6.x-longhorn-e2e-tests-sles-amd64
     project-type: pipeline
-    folder: private
+    folder: public/v1.6.x/sles/amd64
     properties:
       - build-discarder:
           num-to-keep: 300
@@ -22,35 +21,35 @@
           description: "longhorn repo URI"
       - string:
           name: LONGHORN_REPO_BRANCH
-          default: "master"
+          default: "v1.6.x"
           description: "longhorn repo branch"
       - string:
           name: CUSTOM_LONGHORN_MANAGER_IMAGE
-          default: "longhornio/longhorn-manager:master-head"
+          default: "longhornio/longhorn-manager:v1.6.x-head"
           description: "custom longhorn-manager image (e.g USER/longhorn-manager:testing)"
       - string:
           name: CUSTOM_LONGHORN_ENGINE_IMAGE
-          default: "longhornio/longhorn-engine:master-head"
+          default: "longhornio/longhorn-engine:v1.6.x-head"
           description: "custom longhorn-engine image (e.g USER/longhorn-engine:testing)"
       - string:
           name: CUSTOM_LONGHORN_INSTANCE_MANAGER_IMAGE
-          default: "longhornio/longhorn-instance-manager:master-head"
+          default: "longhornio/longhorn-instance-manager:v1.6.x-head"
           description: "custom longhorn-instance-manager image (e.g USER/longhorn-instance-manager:testing), leave blank to use the default"
       - string:
           name: CUSTOM_LONGHORN_SHARE_MANAGER_IMAGE
-          default: "longhornio/longhorn-share-manager:master-head"
+          default: "longhornio/longhorn-share-manager:v1.6.x-head"
           description: "custom longhorn-share-manager image (e.g USER/longhorn-share-manager:testing), leave blank to use the default"
       - string:
           name: CUSTOM_LONGHORN_BACKING_IMAGE_MANAGER_IMAGE
-          default: "longhornio/backing-image-manager:master-head"
+          default: "longhornio/backing-image-manager:v1.6.x-head"
           description: "custom backing-image-manager image (e.g USER/backing-image-manager:testing), leave blank to use the default"
       - string:
           name: LONGHORN_TESTS_CUSTOM_IMAGE
-          default: "longhornio/longhorn-e2e-test:master-head"
+          default: "longhornio/longhorn-e2e-test:v1.6.x-head"
           description: "custom longhorn-manager test image, will be used to run tests"
       - string:
           name: ROBOT_CUSTOM_OPTIONS
-          default: ""
+          default: "-i \"regression\" --exclude \"cluster\" --exclude \"storage-network\" --exclude \"large-size\" -v RETRY_COUNT:1200 -v DATA_ENGINE:v1"
           description: 'robot custom options to run specific tests (e.g -t \"Reboot Volume Node While Workload Heavy Writing\" -v LOOP_COUNT:20 -v RETRY_COUNT:259200)'
       - string:
           name: BACKUP_STORE_TYPE
@@ -58,8 +57,8 @@
           description: "The valid values for this field are 'nfs', 's3', 'cifs', 'azurite'"
       - string:
           name: LONGHORN_STABLE_VERSION
-          default: "v1.7.2"
-          description: "longhorn version that will be installed before upgrade, effective only when LONGHORN_UPGRADE_TEST is TRUE"
+          default: "v1.6.3"
+          description: "longhorn stable version to be installed"
       - string:
           name: LONGHORN_TEST_CLOUDPROVIDER
           default: "aws"
@@ -96,12 +95,7 @@
           default: "15-sp6"
           description: |
              Linux distro version to install on created instances, choosed based on DISTRO values
-             for DISTRO=ubuntu, supported values: [22.04], default: [22.04]
              for DISTRO=sles, supported values: [15-sp6], default: [15-sp6]
-             for DISTRO=rockylinux, supported values: [9.3], default: [9.3]
-             for DISTRO=rhel, supported values: [9.3.0], default: [9.3.0]
-             for DISTRO=oracle, supported values: [9.3], default: [9.3]
-             for DISTRO=sle-micro, supported values: [6.0], default: [6.0]
       - string:
           name: CONTROLPLANE_INSTANCE_TYPE
           default: "t2.xlarge"
@@ -133,6 +127,12 @@
         - git:
             url: https://github.com/longhorn/longhorn-tests
             branches:
-              - master
+              - v1.6.x
       script-path: pipelines/e2e/Jenkinsfile
       lightweight-checkout: true
+    triggers:
+      - parameterized-timer:
+          cron: |
+            TZ=Asia/Taipei
+            H 19 * * 1,2,3,4
+            H 19 * * 5 % ROBOT_CUSTOM_OPTIONS="-i \"negative\" --exclude \"cluster\" --exclude \"storage-network\" --exclude \"large-size\" -v RETRY_COUNT:1200 -v DATA_ENGINE:v1"
