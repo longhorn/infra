@@ -1,7 +1,7 @@
 - job:
     name: v1.6.x-longhorn-e2e-tests-sles-amd64
     project-type: pipeline
-    folder: public/v1.6.x/sles/amd64
+    folder: public/v1.6.x
     properties:
       - build-discarder:
           num-to-keep: 300
