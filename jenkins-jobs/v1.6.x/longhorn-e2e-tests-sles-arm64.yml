@@ -1,7 +1,7 @@
 - job:
-    name: v1.7.x-longhorn-e2e-tests-sles-arm64
+    name: v1.6.x-longhorn-e2e-tests-sles-arm64
     project-type: pipeline
-    folder: public/v1.7.x/sles/arm64
+    folder: public/v1.6.x/sles/arm64
     properties:
       - build-discarder:
           num-to-keep: 300
@@ -21,31 +21,31 @@
           description: "longhorn repo URI"
       - string:
           name: LONGHORN_REPO_BRANCH
-          default: "v1.7.x"
+          default: "v1.6.x"
           description: "longhorn repo branch"
       - string:
           name: CUSTOM_LONGHORN_MANAGER_IMAGE
-          default: "longhornio/longhorn-manager:v1.7.x-head"
+          default: "longhornio/longhorn-manager:v1.6.x-head"
           description: "custom longhorn-manager image (e.g USER/longhorn-manager:testing)"
       - string:
           name: CUSTOM_LONGHORN_ENGINE_IMAGE
-          default: "longhornio/longhorn-engine:v1.7.x-head"
+          default: "longhornio/longhorn-engine:v1.6.x-head"
           description: "custom longhorn-engine image (e.g USER/longhorn-engine:testing)"
       - string:
           name: CUSTOM_LONGHORN_INSTANCE_MANAGER_IMAGE
-          default: "longhornio/longhorn-instance-manager:v1.7.x-head"
+          default: "longhornio/longhorn-instance-manager:v1.6.x-head"
           description: "custom longhorn-instance-manager image (e.g USER/longhorn-instance-manager:testing), leave blank to use the default"
       - string:
           name: CUSTOM_LONGHORN_SHARE_MANAGER_IMAGE
-          default: "longhornio/longhorn-share-manager:v1.7.x-head"
+          default: "longhornio/longhorn-share-manager:v1.6.x-head"
           description: "custom longhorn-share-manager image (e.g USER/longhorn-share-manager:testing), leave blank to use the default"
       - string:
           name: CUSTOM_LONGHORN_BACKING_IMAGE_MANAGER_IMAGE
-          default: "longhornio/backing-image-manager:v1.7.x-head"
+          default: "longhornio/backing-image-manager:v1.6.x-head"
           description: "custom backing-image-manager image (e.g USER/backing-image-manager:testing), leave blank to use the default"
       - string:
           name: LONGHORN_TESTS_CUSTOM_IMAGE
-          default: "longhornio/longhorn-e2e-test:v1.7.x-head"
+          default: "longhornio/longhorn-e2e-test:v1.6.x-head"
           description: "custom longhorn-manager test image, will be used to run tests"
       - string:
           name: ROBOT_CUSTOM_OPTIONS
@@ -127,7 +127,7 @@
         - git:
             url: https://github.com/longhorn/longhorn-tests
             branches:
-              - v1.7.x
+              - v1.6.x
       script-path: pipelines/e2e/Jenkinsfile
       lightweight-checkout: true
     triggers:
