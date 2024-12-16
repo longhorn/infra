@@ -49,7 +49,7 @@
           description: "custom longhorn-manager test image, will be used to run tests"
       - string:
           name: ROBOT_CUSTOM_OPTIONS
-          default: "-i \"regression\" --exclude \"cluster\" --exclude \"storage-network\" --exclude \"large-size\" -v RETRY_COUNT:1200 -v DATA_ENGINE:v1"
+          default: '-i "regression" --exclude "cluster" --exclude "storage-network" --exclude "large-size" -v RETRY_COUNT:1200 -v DATA_ENGINE:v1'
           description: 'robot custom options to run specific tests (e.g -t \"Reboot Volume Node While Workload Heavy Writing\" -v LOOP_COUNT:20 -v RETRY_COUNT:259200)'
       - string:
           name: BACKUP_STORE_TYPE
