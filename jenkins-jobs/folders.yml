@@ -133,3 +133,7 @@
 - job:
     name: public/v1.7.x
     project-type: folder
+
+- job:
+    name: public/v1.8.x
+    project-type: folder
