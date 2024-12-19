@@ -136,4 +136,3 @@
             TZ=Asia/Taipei
             H 19 * * 1,2,3,4
             H 19 * * 5 % ROBOT_CUSTOM_OPTIONS="-i \"negative\" --exclude \"cluster\" --exclude \"storage-network\" --exclude \"large-size\" -v RETRY_COUNT:1200 -v DATA_ENGINE:v1"
-s
