@@ -117,6 +117,10 @@
           - permissive
           - enforcing
           description: "SELINUX mode [permissive | enforcing] (available only for Rockylinux and RHEL)  default: permissive"
+      - bool:
+          name: RUN_V2_TEST
+          default: false
+          description: "use v2 volume for testing"
     pipeline-scm:
       scm:
         - git:

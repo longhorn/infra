@@ -112,6 +112,10 @@
           name: WORKER_INSTANCE_TYPE
           default: "a1.2xlarge"
           description: "aws instance type for worker nodes"
+      - bool:
+          name: RUN_V2_TEST
+          default: false
+          description: "use v2 volume for testing"
     pipeline-scm:
       scm:
         - git:
